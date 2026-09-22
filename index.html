@@ -545,11 +545,16 @@ if (selectedParticipant) {
 const refreshed = participants.find(p => p.id === selectedParticipant.id);
 if (refreshed) {
 selectedParticipant = refreshed;
-// 폼 값까지 덮어쓰면 입력 중인 내용이 날아갈 수 있으므로, 동반자 목록/상태 배지 정도만 갱신
+// 폼 값까지 덮어쓰면 입력 중인 내용이 날아갈 수 있으므로, 동반자 목록/상태 배지만 갱신
+const rsvpCard = document.getElementById('rsvp-card');
+if (rsvpCard && !rsvpCard.classList.contains('hidden')) {
 const badge = document.getElementById('rsvp-status-badge');
-if (badge && document.getElementById('rsvp-card') && !document.getElementById('rsvp-card').classList.contains('hidden')) {
+if (badge) {
 badge.innerText = refreshed.status;
 badge.className = `px-3 py-1 rounded-full text-xs font-bold ${getStatusBadgeClass(refreshed.status)}`;
+}
+// 동반자 중 누군가 방금 체크했을 수도 있으므로 함께 식사하는 분 목록도 다시 그림
+renderCompanions(refreshed);
 }
 }
 }
@@ -697,21 +702,8 @@ document.getElementById('info-date').innerText = `${selectedParticipant.date}(${
 document.getElementById('info-dept').innerText = `${selectedParticipant.affiliation} / ${selectedParticipant.dept}`;
 document.getElementById('info-location').innerText = LOCATIONS[selectedParticipant.campus] || '';
 
-// 함께 식사하는 분: 같은 캠퍼스 + 같은 회차 (본인 제외)
-const companions = participants.filter(p =>
-p.campus === selectedParticipant.campus &&
-p.round === selectedParticipant.round &&
-p.id !== selectedParticipant.id
-);
-document.getElementById('info-companions-count').innerText = `(${companions.length}명)`;
-document.getElementById('info-companions').innerHTML = companions.length
-? companions.map(c => `
-<div class="flex items-center gap-2 bg-white border border-slate-200 rounded-lg px-3 py-2">
-<i class="fa-solid fa-user text-hufs-blue text-xs"></i>
-<span class="font-semibold text-slate-800">${c.name}</span>
-<span class="text-xs text-slate-500 truncate">${c.dept}</span>
-</div>`).join('')
-: '<span class="text-slate-400">-</span>';
+// 함께 식사하는 분: 같은 캠퍼스 + 같은 회차 (본인 제외) - 실시간 참석 여부 포함
+renderCompanions(selectedParticipant);
 
 // Status Badge
 const badge = document.getElementById('rsvp-status-badge');
@@ -729,6 +721,47 @@ document.getElementById('rsvp-memo').value = selectedParticipant.memo || '';
 document.getElementById('submit-btn-text').innerText = selectedParticipant.status === '미응답' ? 'RSVP 제출하기' : 'RSVP 수정하기';
 
 document.getElementById('rsvp-card').classList.remove('hidden');
+}
+
+// 함께 식사하는 분 목록을 실시간 참석 여부 배지와 함께 렌더링
+// participants 배열이 Firestore 실시간 구독(applyRemoteRSVP)으로 갱신될 때마다
+// 이 함수를 다시 호출하면 다른 사용자가 방금 체크한 상태까지 바로 반영됨
+function renderCompanions(person) {
+if (!person) return;
+
+const companions = participants.filter(p =>
+p.campus === person.campus &&
+p.round === person.round &&
+p.id !== person.id
+);
+
+const countEl = document.getElementById('info-companions-count');
+const listEl = document.getElementById('info-companions');
+if (!countEl || !listEl) return;
+
+countEl.innerText = `(${companions.length}명)`;
+
+const statusIcon = (status) => {
+switch (status) {
+case '참석': return '<i class="fa-solid fa-circle-check text-emerald-500"></i>';
+case '불참': return '<i class="fa-solid fa-circle-xmark text-rose-500"></i>';
+default: return '<i class="fa-regular fa-clock text-slate-400"></i>';
+}
+};
+
+listEl.innerHTML = companions.length
+? companions.map(c => `
+<div class="flex items-center justify-between gap-2 bg-white border border-slate-200 rounded-lg px-3 py-2">
+<div class="flex items-center gap-2 min-w-0">
+<i class="fa-solid fa-user text-hufs-blue text-xs shrink-0"></i>
+<span class="font-semibold text-slate-800 shrink-0">${c.name}</span>
+<span class="text-xs text-slate-500 truncate">${c.dept}</span>
+</div>
+<span class="flex items-center gap-1 text-xs font-bold px-2 py-0.5 rounded-full shrink-0 ${getStatusBadgeClass(c.status)}">
+${statusIcon(c.status)} ${c.status}
+</span>
+</div>`).join('')
+: '<span class="text-slate-400">-</span>';
 }
 
 async function handleRsvpSubmit(e) {
