@@ -1,959 +1,1008 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>2026 한국외국어대학교 노동조합(2ne1) 식사를 통한 소통 RSVP</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            hufs: {
-              navy: '#002D56',
-              blue: '#00529B',
-              lightBlue: '#E8F1F5',
-              gold: '#C5A059',
-              goldDark: '#A37F3E',
-              grayBg: '#F8FAFC'
-            }
-          },
-          fontFamily: {
-            sans: ['Pretendard', 'sans-serif'],
-          }
-        }
-      }
-    }
-  </script>
-  <style>
-    body { font-family: 'Pretendard', sans-serif; background-color: #F8FAFC; }
-    .glass-card { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
-    .tab-active { border-bottom: 3px solid #002D56; color: #002D56; font-weight: 700; }
-    .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
-    .custom-scrollbar::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 4px; }
-    .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
-    .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 한국외국어대학교 노동조합 식사를 통한 소통 RSVP</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+hufs: {
+navy: '#002D56',
+blue: '#00529B',
+lightBlue: '#E8F1F5',
+gold: '#C5A059',
+goldDark: '#A37F3E',
+grayBg: '#F8FAFC'
+}
+},
+fontFamily: {
+sans: ['Pretendard', 'sans-serif'],
+}
+}
+}
+}
+</script>
+<style>
+body { font-family: 'Pretendard', sans-serif; background-color: #F8FAFC; }
+.glass-card { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
+.tab-active { border-bottom: 3px solid #002D56; color: #002D56; font-weight: 700; }
+.custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
+.custom-scrollbar::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 4px; }
+.custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+.custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+</style>
 </head>
 <body class="text-slate-800 min-h-screen flex flex-col justify-between">
+<header class="bg-hufs-navy text-white shadow-md sticky top-0 z-50">
+<div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+<div class="flex items-center space-x-3 cursor-pointer" onclick="switchView('user')">
+<div class="w-10 h-10 bg-hufs-gold text-hufs-navy font-bold rounded-lg flex items-center justify-center text-lg shadow-sm">
+<i class="fa-solid font-bold fa-utensils"></i>
+</div>
+<div>
+<h1 class="text-lg md:text-xl font-bold leading-tight">2026 한국외국어대학교 노동조합 식사를 통한 소통</h1>
+<p class="text-xs text-blue-200">참석 여부 확인 시스템</p>
+</div>
+</div>
+<nav class="flex items-center space-x-2">
+<button id="nav-user-btn" onclick="switchView('user')" class="px-3 py-1.5 rounded-lg text-sm font-medium transition bg-white/10 hover:bg-white/20 text-white flex items-center gap-1.5">
+<i class="fa-solid fa-user-check"></i> <span>참석 확인</span>
+</button>
+<button id="nav-admin-btn" onclick="switchView('admin')" class="px-3 py-1.5 rounded-lg text-sm font-medium transition bg-transparent hover:bg-white/10 text-blue-200 hover:text-white flex items-center gap-1.5">
+<i class="fa-solid fa-chart-pie"></i> <span class="hidden md:inline">전체 현황 / 관리자</span>
+</button>
+</nav>
+</div>
+</header>
+<main class="max-w-6xl mx-auto px-4 py-6 md:py-10 flex-grow w-full">
+<section id="view-user" class="space-y-6">
+<!-- Banner -->
+<div class="bg-gradient-to-r from-hufs-navy via-hufs-blue to-indigo-900 rounded-2xl p-6 md:p-8 text-white shadow-lg relative overflow-hidden">
+<div class="relative z-10 max-w-2xl">
+<span class="inline-block px-3 py-1 bg-hufs-gold text-hufs-navy text-xs font-bold rounded-full mb-3 shadow">2026 한국외국어대학교 노동조합 식사를 통한 소통</span>
+<h2 class="text-2xl md:text-3xl font-bold mb-2">조합원 여러분을 점심식사에 초대합니다</h2>
+<p class="text-blue-100 text-sm md:text-base leading-relaxed mb-4">
+조합원 상호 간의 친목과 원활한 소통을 위해 점심식사 자리를 마련했습니다.<br class="hidden sm:inline">
+아래에서 "이름"을 검색하여 본인의 일정을 확인하고 참석 여부를 등록해 주세요. 참석여부는 언제든지 수정 가능합니다.
+</p>
+<div class="flex flex-wrap gap-4 text-xs md:text-sm text-slate-200">
+<span class="flex items-center gap-1.5 bg-white/10 px-3 py-1.5 rounded-md"><i class="fa-regular fa-building text-hufs-gold"></i> 서울: 매주 수요일 (13회차)</span>
+<span class="flex items-center gap-1.5 bg-white/10 px-3 py-1.5 rounded-md"><i class="fa-solid fa-globe text-hufs-gold"></i> 글로벌: 매주 목요일 (6회차)</span>
+</div>
+</div>
+<i class="fa-solid fa-utensils absolute -right-6 -bottom-6 text-9xl text-white/5 pointer-events-none transform -rotate-12"></i>
+</div>
+<!-- Search Card -->
+<div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 max-w-2xl mx-auto">
+<label for="name-search-input" class="block text-sm font-bold text-slate-700 mb-2">
+<i class="fa-solid fa-magnifying-glass text-hufs-blue mr-1"></i> 참석자 이름 검색
+</label>
+<div class="relative">
+<input type="text" id="name-search-input" placeholder="이름을 입력하세요 (예: 홍길동)"
+class="w-full px-4 py-3.5 pl-11 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-hufs-blue focus:border-transparent text-slate-800 text-base shadow-sm">
+<i class="fa-solid fa-user absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+<button id="clear-search-btn" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 p-1.5">
+<i class="fa-solid fa-circle-xmark"></i>
+</button>
+</div>
+<!-- Auto-complete Suggestions -->
+<div id="suggestions-container" class="hidden mt-2 bg-white rounded-xl border border-slate-200 shadow-xl overflow-hidden divide-y divide-slate-100 max-h-60 overflow-y-auto custom-scrollbar"></div>
+<p class="text-xs text-slate-500 mt-2.5 flex items-center gap-1">
+<i class="fa-solid fa-circle-info text-blue-500"></i> 동명이인이 있는 경우 소속 및 연락처를 함께 확인해 주세요.
+</p>
+</div>
+<!-- Result & RSVP Card (Hidden by default) -->
+<div id="rsvp-card" class="hidden bg-white rounded-2xl shadow-md border border-slate-200 overflow-hidden max-w-2xl mx-auto transition-all">
+<!-- Card Header -->
+<div class="bg-slate-50 border-b border-slate-200 p-5 flex justify-between items-center">
+<div class="flex items-center gap-3">
+<div id="campus-badge" class="px-2.5 py-1 text-xs font-bold rounded-full bg-blue-100 text-blue-800">
+서울캠퍼스
+</div>
+<h3 class="text-lg font-bold text-slate-800" id="participant-name-title">김학중 님</h3>
+</div>
+<span id="rsvp-status-badge" class="px-3 py-1 rounded-full text-xs font-bold bg-slate-200 text-slate-600">
+미응답
+</span>
+</div>
+<div class="p-6 space-y-6">
+<!-- Schedule Info Box -->
+<div class="bg-slate-50 rounded-xl p-4 border border-slate-200/80 space-y-3">
+<div class="flex items-center gap-2 text-hufs-navy font-bold text-base border-b border-slate-200 pb-2">
+<i class="fa-regular fa-calendar-check text-hufs-blue"></i>
+<span>배정 일정: <span id="info-round" class="text-hufs-blue">1회차</span></span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+<div>
+<span class="text-slate-500 block text-xs">일시</span>
+<span id="info-date" class="font-semibold text-slate-800">2026-09-30(수) 12:00</span>
+</div>
+<div>
+<span class="text-slate-500 block text-xs">소속 / 근무부서</span>
+<span id="info-dept" class="font-semibold text-slate-800">한국외대 / 학술정보팀</span>
+</div>
+<div class="sm:col-span-2">
+<span class="text-slate-500 block text-xs">장소</span>
+<span id="info-location" class="font-semibold text-slate-800">서울캠퍼스 본관 602호 노동조합 사무실</span>
+</div>
+<div class="sm:col-span-2">
+<span class="text-slate-500 block text-xs mb-1.5">함께 식사하는 분 <span id="info-companions-count" class="text-slate-400"></span></span>
+<div id="info-companions" class="grid grid-cols-1 sm:grid-cols-2 gap-2"></div>
+</div>
+</div>
+</div>
+<!-- RSVP Form -->
+<form id="rsvp-form" onsubmit="handleRsvpSubmit(event)" class="space-y-5">
+<div>
+<label class="block text-sm font-bold text-slate-700 mb-2">참석 여부 선택 <span class="text-red-500">*</span></label>
+<div class="grid grid-cols-2 gap-3">
+<label class="cursor-pointer border-2 rounded-xl p-4 flex flex-col items-center justify-center text-center transition hover:border-slate-300 has-[:checked]:border-emerald-500 has-[:checked]:bg-emerald-50/50 has-[:checked]:text-emerald-900">
+<input type="radio" name="attendance" value="참석" class="sr-only" required>
+<i class="fa-solid fa-circle-check text-2xl mb-1 text-slate-400 peer-checked:text-emerald-600"></i>
+<span class="font-bold text-base">참석합니다</span>
+<span class="text-xs text-slate-500 mt-0.5">식사에 참여합니다</span>
+</label>
+<label class="cursor-pointer border-2 rounded-xl p-4 flex flex-col items-center justify-center text-center transition hover:border-slate-300 has-[:checked]:border-rose-500 has-[:checked]:bg-rose-50/50 has-[:checked]:text-rose-900">
+<input type="radio" name="attendance" value="불참" class="sr-only" required>
+<i class="fa-solid fa-circle-xmark text-2xl mb-1 text-slate-400 peer-checked:text-rose-600"></i>
+<span class="font-bold text-base">불참합니다</span>
+<span class="text-xs text-slate-500 mt-0.5">일정이 어렵습니다</span>
+</label>
+</div>
+</div>
+<div>
+<label for="rsvp-memo" class="block text-sm font-bold text-slate-700 mb-1">
+기타 문의 및 메모 <span class="text-xs font-normal text-slate-500">(선택사항: 식이 제한, 기타 알림 등)</span>
+</label>
+<textarea id="rsvp-memo" rows="2" placeholder="메모할 사항이 있다면 적어주세요."
+class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-hufs-blue text-sm"></textarea>
+</div>
+<button type="submit" class="w-full bg-hufs-navy hover:bg-hufs-blue text-white font-bold py-3.5 px-4 rounded-xl shadow-md transition flex items-center justify-center gap-2">
+<i class="fa-solid fa-paper-plane"></i>
+<span id="submit-btn-text">RSVP 제출하기</span>
+</button>
+</form>
+</div>
+</div>
+</section>
+<section id="view-admin" class="hidden space-y-6">
+<!-- Admin Header Stats -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+<div>
+<h2 class="text-2xl font-bold text-slate-800">참석 응답 관리자 대시보드</h2>
+<p class="text-sm text-slate-500">실시간 RSVP 응답 통계 및 회차별 현황을 조회합니다.</p>
+</div>
+<div class="flex items-center gap-2">
+<button onclick="exportToCSV()" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-sm font-semibold transition flex items-center gap-2 shadow-sm">
+<i class="fa-solid fa-file-excel"></i> CSV 명단 다운로드
+</button>
+<button onclick="resetDataPrompt()" class="px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-lg text-sm font-medium transition" title="데이터 초기화">
+<i class="fa-solid fa-rotate-right"></i>
+</button>
+</div>
+</div>
+<!-- Key Metrics Overview -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+<div class="text-xs font-bold text-slate-400 uppercase">전체 대상자</div>
+<div class="text-3xl font-extrabold text-slate-800 mt-1" id="stat-total">137명</div>
+<div class="text-xs text-slate-500 mt-1">서울 95 / 글로벌 42</div>
+</div>
+<div class="bg-white p-5 rounded-2xl border border-emerald-200 bg-emerald-50/20 shadow-sm">
+<div class="text-xs font-bold text-emerald-600 uppercase">참석 예정</div>
+<div class="text-3xl font-extrabold text-emerald-600 mt-1" id="stat-attending">0명</div>
+<div class="text-xs text-emerald-700 mt-1" id="stat-attending-pct">0%</div>
+</div>
+<div class="bg-white p-5 rounded-2xl border border-rose-200 bg-rose-50/20 shadow-sm">
+<div class="text-xs font-bold text-rose-600 uppercase">불참</div>
+<div class="text-3xl font-extrabold text-rose-600 mt-1" id="stat-absent">0명</div>
+<div class="text-xs text-rose-700 mt-1" id="stat-absent-pct">0%</div>
+</div>
+<div class="bg-white p-5 rounded-2xl border border-amber-200 bg-amber-50/20 shadow-sm">
+<div class="text-xs font-bold text-amber-600 uppercase">미응답</div>
+<div class="text-3xl font-extrabold text-amber-600 mt-1" id="stat-pending">137명</div>
+<div class="text-xs text-amber-700 mt-1" id="stat-pending-pct">100%</div>
+</div>
+</div>
+<!-- Campus & Filter Tabs -->
+<div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 space-y-4">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 pb-4">
+<div class="flex space-x-2">
+<button id="tab-all" onclick="filterCampus('ALL')" class="px-4 py-2 rounded-xl text-sm font-bold transition bg-hufs-navy text-white">
+전체
+</button>
+<button id="tab-seoul" onclick="filterCampus('서울')" class="px-4 py-2 rounded-xl text-sm font-bold transition bg-slate-100 text-slate-600 hover:bg-slate-200">
+서울캠퍼스
+</button>
+<button id="tab-global" onclick="filterCampus('글로벌')" class="px-4 py-2 rounded-xl text-sm font-bold transition bg-slate-100 text-slate-600 hover:bg-slate-200">
+글로벌캠퍼스
+</button>
+</div>
+<!-- Search & Filter Controls -->
+<div class="flex flex-wrap items-center gap-2">
+<select id="admin-status-filter" onchange="applyAdminFilters()" class="px-3 py-2 border border-slate-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-hufs-blue">
+<option value="ALL">전체 응답 상태</option>
+<option value="참석">참석만 보기</option>
+<option value="불참">불참만 보기</option>
+<option value="미응답">미응답만 보기</option>
+</select>
+<input type="text" id="admin-search-input" onkeyup="applyAdminFilters()" placeholder="이름/부서 검색"
+class="px-3 py-2 border border-slate-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-hufs-blue">
+</div>
+</div>
+<!-- Schedule Round Breakdown Accordion / Cards -->
+<h3 class="text-base font-bold text-slate-800 mt-4 flex items-center gap-2">
+<i class="fa-solid fa-list-ol text-hufs-blue"></i> 회차별 현황
+</h3>
+<div id="round-summary-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3"></div>
+<!-- Participant Detail Table -->
+<div class="pt-4">
+<h3 class="text-base font-bold text-slate-800 mb-3 flex items-center gap-2">
+<i class="fa-solid fa-users text-hufs-blue"></i> 상세 명단 (<span id="admin-table-count">0</span>명)
+</h3>
+<div class="overflow-x-auto rounded-xl border border-slate-200">
+<table class="w-full text-left border-collapse text-sm">
+<thead class="bg-slate-100 text-slate-600 uppercase text-xs">
+<tr>
+<th class="p-3">캠퍼스</th>
+<th class="p-3">회차</th>
+<th class="p-3">일자</th>
+<th class="p-3">이름</th>
+<th class="p-3">근무부서</th>
+<th class="p-3">휴대폰</th>
+<th class="p-3">상태</th>
+<th class="p-3">메모</th>
+<th class="p-3 text-center">관리</th>
+</tr>
+</thead>
+<tbody id="admin-table-body" class="divide-y divide-slate-200 bg-white">
+<!-- Dynamic Rows -->
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-slate-800 text-slate-400 py-6 mt-12 text-center text-xs">
+<div class="max-w-6xl mx-auto px-4">
+<p>한국외국어대학교 노동조합(2ne1)</p>
+<p class="mt-1 text-slate-500">문의: 노동조합 사무실 | TEL:02-2173-2611 | hufslabor@hufs.ac.kr</p>
+</div>
+</footer>
+<!-- Admin Password Modal -->
+<div id="admin-login-modal" class="hidden fixed inset-0 z-[60] bg-slate-900/60 flex items-center justify-center px-4" onclick="if(event.target===this) closeAdminLogin()">
+<div class="bg-white rounded-2xl shadow-2xl w-full max-w-sm p-6" role="dialog" aria-modal="true" aria-labelledby="admin-login-title">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-lg bg-hufs-lightBlue text-hufs-navy flex items-center justify-center">
+<i class="fa-solid fa-lock"></i>
+</div>
+<div>
+<h3 id="admin-login-title" class="text-base font-bold text-slate-800">관리자 확인</h3>
+<p class="text-xs text-slate-500">비밀번호를 입력해 주세요.</p>
+</div>
+</div>
+<form onsubmit="handleAdminLogin(event)" class="space-y-3">
+<input type="password" id="admin-password-input" inputmode="numeric" autocomplete="off" placeholder="비밀번호"
+class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-hufs-blue text-base tracking-widest">
+<p id="admin-login-error" class="hidden text-xs font-semibold text-rose-600 flex items-center gap-1">
+<i class="fa-solid fa-circle-exclamation"></i> 비밀번호가 올바르지 않습니다.
+</p>
+<div class="grid grid-cols-2 gap-2 pt-1">
+<button type="button" onclick="closeAdminLogin()" class="py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-600 text-sm font-semibold transition">취소</button>
+<button type="submit" class="py-2.5 rounded-xl bg-hufs-navy hover:bg-hufs-blue text-white text-sm font-bold transition">확인</button>
+</div>
+</form>
+</div>
+</div>
+<!-- Notification Toast -->
+<div id="toast" class="fixed bottom-5 right-5 transform translate-y-20 opacity-0 transition-all duration-300 bg-slate-900 text-white px-5 py-3.5 rounded-xl shadow-2xl flex items-center gap-3 z-50">
+<i id="toast-icon" class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
+<span id="toast-msg" class="text-sm font-medium">성공적으로 제출되었습니다.</span>
+</div>
 
-  <header class="bg-hufs-navy text-white shadow-md sticky top-0 z-50">
-    <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
-      <div class="flex items-center space-x-3 cursor-pointer" onclick="switchView('user')">
-        <div class="w-10 h-10 bg-hufs-gold text-hufs-navy font-bold rounded-lg flex items-center justify-center text-lg shadow-sm">
-          <i class="fa-solid font-bold fa-utensils"></i>
-        </div>
-        <div>
-          <h1 class="text-lg md:text-xl font-bold leading-tight">2026 한국외국어대학교 노동조합(2ne1) 식사를 통한 소통</h1>
-          <p class="text-xs text-blue-200">참석 여부 확인 시스템</p>
-        </div>
-      </div>
-      <nav class="flex items-center space-x-2">
-        <button id="nav-user-btn" onclick="switchView('user')" class="px-3 py-1.5 rounded-lg text-sm font-medium transition bg-white/10 hover:bg-white/20 text-white flex items-center gap-1.5">
-          <i class="fa-solid fa-user-check"></i> <span>참석 확인</span>
-        </button>
-        <button id="nav-admin-btn" onclick="switchView('admin')" class="px-3 py-1.5 rounded-lg text-sm font-medium transition bg-transparent hover:bg-white/10 text-blue-200 hover:text-white flex items-center gap-1.5">
-          <i class="fa-solid fa-chart-pie"></i> <span class="hidden md:inline">전체 현황 / 관리자</span>
-        </button>
-      </nav>
-    </div>
-  </header>
+<!-- ==================== Firebase (공유 저장소) ==================== -->
+<script type="module">
+  // TODO: 아래 firebaseConfig 값을 본인의 Firebase 프로젝트 설정으로 교체하세요.
+  // Firebase 콘솔(https://console.firebase.google.com) > 프로젝트 설정 > 일반 > 내 앱 에서 확인
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import {
+    getFirestore, doc, setDoc, deleteDoc, onSnapshot, collection
+  } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-  <main class="max-w-6xl mx-auto px-4 py-6 md:py-10 flex-grow w-full">
+  const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_PROJECT_ID.appspot.com",
+    messagingSenderId: "YOUR_SENDER_ID",
+    appId: "YOUR_APP_ID"
+  };
 
-    <section id="view-user" class="space-y-6">
-      
-      <!-- Banner -->
-      <div class="bg-gradient-to-r from-hufs-navy via-hufs-blue to-indigo-900 rounded-2xl p-6 md:p-8 text-white shadow-lg relative overflow-hidden">
-        <div class="relative z-10 max-w-2xl">
-          <span class="inline-block px-3 py-1 bg-hufs-gold text-hufs-navy text-xs font-bold rounded-full mb-3 shadow">2026 한국외국어대학교 노동조합 식사를 통한 소통</span>
-          <h2 class="text-2xl md:text-3xl font-bold mb-2">조합원 여러분을 점심식사에 초대합니다</h2>
-          <p class="text-blue-100 text-sm md:text-base leading-relaxed mb-4">
-            조합원 상호 간의 친목과 원활한 소통을 위해 점심식사 자리를 마련했습니다.<br class="hidden sm:inline">
-            아래에서 "이름"을 검색하여 본인의 일정을 확인하고 참석 여부를 등록해 주세요.<br class="hidden sm:inline">
-            참석여부는 언제든지 수정 가능합니다.
-          </p>
-          <div class="flex flex-wrap gap-4 text-xs md:text-sm text-slate-200">
-            <span class="flex items-center gap-1.5 bg-white/10 px-3 py-1.5 rounded-md"><i class="fa-regular fa-building text-hufs-gold"></i> 서울: 매주 수요일 (13회차)</span>
-            <span class="flex items-center gap-1.5 bg-white/10 px-3 py-1.5 rounded-md"><i class="fa-solid fa-globe text-hufs-gold"></i> 글로벌: 매주 목요일 (6회차)</span>
-          </div>
-        </div>
-        <i class="fa-solid fa-utensils absolute -right-6 -bottom-6 text-9xl text-white/5 pointer-events-none transform -rotate-12"></i>
-      </div>
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+  const rsvpCollection = collection(db, "hufs_union_rsvp");
 
-      <!-- Search Card -->
-      <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 max-w-2xl mx-auto">
-        <label for="name-search-input" class="block text-sm font-bold text-slate-700 mb-2">
-          <i class="fa-solid fa-magnifying-glass text-hufs-blue mr-1"></i> 참석자 이름 검색
-        </label>
-        <div class="relative">
-          <input type="text" id="name-search-input" placeholder="이름을 입력하세요 (예: 홍길동)" 
-                 class="w-full px-4 py-3.5 pl-11 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-hufs-blue focus:border-transparent text-slate-800 text-base shadow-sm">
-          <i class="fa-solid fa-user absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
-          <button id="clear-search-btn" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 p-1.5">
-            <i class="fa-solid fa-circle-xmark"></i>
-          </button>
-        </div>
+  // 전역에 노출해서 기존 script 태그(module 아님)에서 쓸 수 있게 함
+  window.__fb = { db, doc, setDoc, deleteDoc, onSnapshot, rsvpCollection };
 
-        <!-- Auto-complete Suggestions -->
-        <div id="suggestions-container" class="hidden mt-2 bg-white rounded-xl border border-slate-200 shadow-xl overflow-hidden divide-y divide-slate-100 max-h-60 overflow-y-auto custom-scrollbar"></div>
-        <p class="text-xs text-slate-500 mt-2.5 flex items-center gap-1">
-          <i class="fa-solid fa-circle-info text-blue-500"></i> 동명이인이 있는 경우 소속을 함께 확인해 주세요.
-        </p>
-      </div>
-
-      <!-- Result & RSVP Card (Hidden by default) -->
-      <div id="rsvp-card" class="hidden bg-white rounded-2xl shadow-md border border-slate-200 overflow-hidden max-w-2xl mx-auto transition-all">
-        <!-- Card Header -->
-        <div class="bg-slate-50 border-b border-slate-200 p-5 flex justify-between items-center">
-          <div class="flex items-center gap-3">
-            <div id="campus-badge" class="px-2.5 py-1 text-xs font-bold rounded-full bg-blue-100 text-blue-800">
-              서울캠퍼스
-            </div>
-            <h3 class="text-lg font-bold text-slate-800" id="participant-name-title">김학중 님</h3>
-          </div>
-          <span id="rsvp-status-badge" class="px-3 py-1 rounded-full text-xs font-bold bg-slate-200 text-slate-600">
-            미응답
-          </span>
-        </div>
-
-        <div class="p-6 space-y-6">
-          <!-- Schedule Info Box -->
-          <div class="bg-slate-50 rounded-xl p-4 border border-slate-200/80 space-y-3">
-            <div class="flex items-center gap-2 text-hufs-navy font-bold text-base border-b border-slate-200 pb-2">
-              <i class="fa-regular fa-calendar-check text-hufs-blue"></i>
-              <span>배정 일정: <span id="info-round" class="text-hufs-blue">1회차</span></span>
-            </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
-              <div>
-                <span class="text-slate-500 block text-xs">일시</span>
-                <span id="info-date" class="font-semibold text-slate-800">2026-09-30(수) 12:00</span>
-              </div>
-              <div>
-                <span class="text-slate-500 block text-xs">소속 / 근무부서</span>
-                <span id="info-dept" class="font-semibold text-slate-800">한국외대 / 학술정보팀</span>
-              </div>
-              <div class="sm:col-span-2">
-                <span class="text-slate-500 block text-xs">장소</span>
-                <span id="info-location" class="font-semibold text-slate-800">서울캠퍼스 본관 602호 노동조합 사무실</span>
-              </div>
-              <div class="sm:col-span-2">
-                <span class="text-slate-500 block text-xs mb-1.5">함께 식사하는 분 <span id="info-companions-count" class="text-slate-400"></span></span>
-                <div id="info-companions" class="grid grid-cols-1 sm:grid-cols-2 gap-2"></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- RSVP Form -->
-          <form id="rsvp-form" onsubmit="handleRsvpSubmit(event)" class="space-y-5">
-            <div>
-              <label class="block text-sm font-bold text-slate-700 mb-2">참석 여부 선택 <span class="text-red-500">*</span></label>
-              <div class="grid grid-cols-2 gap-3">
-                <label class="cursor-pointer border-2 rounded-xl p-4 flex flex-col items-center justify-center text-center transition hover:border-slate-300 has-[:checked]:border-emerald-500 has-[:checked]:bg-emerald-50/50 has-[:checked]:text-emerald-900">
-                  <input type="radio" name="attendance" value="참석" class="sr-only" required>
-                  <i class="fa-solid fa-circle-check text-2xl mb-1 text-slate-400 peer-checked:text-emerald-600"></i>
-                  <span class="font-bold text-base">참석합니다</span>
-                  <span class="text-xs text-slate-500 mt-0.5">식사에 참여합니다</span>
-                </label>
-
-                <label class="cursor-pointer border-2 rounded-xl p-4 flex flex-col items-center justify-center text-center transition hover:border-slate-300 has-[:checked]:border-rose-500 has-[:checked]:bg-rose-50/50 has-[:checked]:text-rose-900">
-                  <input type="radio" name="attendance" value="불참" class="sr-only" required>
-                  <i class="fa-solid fa-circle-xmark text-2xl mb-1 text-slate-400 peer-checked:text-rose-600"></i>
-                  <span class="font-bold text-base">불참합니다</span>
-                  <span class="text-xs text-slate-500 mt-0.5">일정이 어렵습니다</span>
-                </label>
-              </div>
-            </div>
-
-            <div>
-              <label for="rsvp-memo" class="block text-sm font-bold text-slate-700 mb-1">
-                기타 문의 및 메모 <span class="text-xs font-normal text-slate-500">(선택사항: 식이 제한, 기타 알림 등)</span>
-              </label>
-              <textarea id="rsvp-memo" rows="2" placeholder="메모할 사항이 있다면 적어주세요." 
-                        class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-hufs-blue text-sm"></textarea>
-            </div>
-
-            <button type="submit" class="w-full bg-hufs-navy hover:bg-hufs-blue text-white font-bold py-3.5 px-4 rounded-xl shadow-md transition flex items-center justify-center gap-2">
-              <i class="fa-solid fa-paper-plane"></i>
-              <span id="submit-btn-text">RSVP 제출하기</span>
-            </button>
-          </form>
-        </div>
-      </div>
-      
-    </section>
-
-    <section id="view-admin" class="hidden space-y-6">
-      
-      <!-- Admin Header Stats -->
-      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
-        <div>
-          <h2 class="text-2xl font-bold text-slate-800">참석 응답 관리자 대시보드</h2>
-          <p class="text-sm text-slate-500">실시간 RSVP 응답 통계 및 회차별 현황을 조회합니다.</p>
-        </div>
-        <div class="flex items-center gap-2">
-          <button onclick="exportToCSV()" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-sm font-semibold transition flex items-center gap-2 shadow-sm">
-            <i class="fa-solid fa-file-excel"></i> CSV 명단 다운로드
-          </button>
-          <button onclick="resetDataPrompt()" class="px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-lg text-sm font-medium transition" title="데이터 초기화">
-            <i class="fa-solid fa-rotate-right"></i>
-          </button>
-        </div>
-      </div>
-
-      <!-- Key Metrics Overview -->
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
-          <div class="text-xs font-bold text-slate-400 uppercase">전체 대상자</div>
-          <div class="text-3xl font-extrabold text-slate-800 mt-1" id="stat-total">137명</div>
-          <div class="text-xs text-slate-500 mt-1">서울 95 / 글로벌 42</div>
-        </div>
-        <div class="bg-white p-5 rounded-2xl border border-emerald-200 bg-emerald-50/20 shadow-sm">
-          <div class="text-xs font-bold text-emerald-600 uppercase">참석 예정</div>
-          <div class="text-3xl font-extrabold text-emerald-600 mt-1" id="stat-attending">0명</div>
-          <div class="text-xs text-emerald-700 mt-1" id="stat-attending-pct">0%</div>
-        </div>
-        <div class="bg-white p-5 rounded-2xl border border-rose-200 bg-rose-50/20 shadow-sm">
-          <div class="text-xs font-bold text-rose-600 uppercase">불참</div>
-          <div class="text-3xl font-extrabold text-rose-600 mt-1" id="stat-absent">0명</div>
-          <div class="text-xs text-rose-700 mt-1" id="stat-absent-pct">0%</div>
-        </div>
-        <div class="bg-white p-5 rounded-2xl border border-amber-200 bg-amber-50/20 shadow-sm">
-          <div class="text-xs font-bold text-amber-600 uppercase">미응답</div>
-          <div class="text-3xl font-extrabold text-amber-600 mt-1" id="stat-pending">137명</div>
-          <div class="text-xs text-amber-700 mt-1" id="stat-pending-pct">100%</div>
-        </div>
-      </div>
-
-      <!-- Campus & Filter Tabs -->
-      <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 space-y-4">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 pb-4">
-          <div class="flex space-x-2">
-            <button id="tab-all" onclick="filterCampus('ALL')" class="px-4 py-2 rounded-xl text-sm font-bold transition bg-hufs-navy text-white">
-              전체
-            </button>
-            <button id="tab-seoul" onclick="filterCampus('서울')" class="px-4 py-2 rounded-xl text-sm font-bold transition bg-slate-100 text-slate-600 hover:bg-slate-200">
-              서울캠퍼스
-            </button>
-            <button id="tab-global" onclick="filterCampus('글로벌')" class="px-4 py-2 rounded-xl text-sm font-bold transition bg-slate-100 text-slate-600 hover:bg-slate-200">
-              글로벌캠퍼스
-            </button>
-          </div>
-
-          <!-- Search & Filter Controls -->
-          <div class="flex flex-wrap items-center gap-2">
-            <select id="admin-status-filter" onchange="applyAdminFilters()" class="px-3 py-2 border border-slate-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-hufs-blue">
-              <option value="ALL">전체 응답 상태</option>
-              <option value="참석">참석만 보기</option>
-              <option value="불참">불참만 보기</option>
-              <option value="미응답">미응답만 보기</option>
-            </select>
-
-            <input type="text" id="admin-search-input" onkeyup="applyAdminFilters()" placeholder="이름/부서 검색" 
-                   class="px-3 py-2 border border-slate-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-hufs-blue">
-          </div>
-        </div>
-
-        <!-- Schedule Round Breakdown Accordion / Cards -->
-        <h3 class="text-base font-bold text-slate-800 mt-4 flex items-center gap-2">
-          <i class="fa-solid fa-list-ol text-hufs-blue"></i> 회차별 현황
-        </h3>
-        <div id="round-summary-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3"></div>
-
-        <!-- Participant Detail Table -->
-        <div class="pt-4">
-          <h3 class="text-base font-bold text-slate-800 mb-3 flex items-center gap-2">
-            <i class="fa-solid fa-users text-hufs-blue"></i> 상세 명단 (<span id="admin-table-count">0</span>명)
-          </h3>
-          <div class="overflow-x-auto rounded-xl border border-slate-200">
-            <table class="w-full text-left border-collapse text-sm">
-              <thead class="bg-slate-100 text-slate-600 uppercase text-xs">
-                <tr>
-                  <th class="p-3">캠퍼스</th>
-                  <th class="p-3">회차</th>
-                  <th class="p-3">일자</th>
-                  <th class="p-3">이름</th>
-                  <th class="p-3">근무부서</th>
-                  <th class="p-3">휴대폰</th>
-                  <th class="p-3">상태</th>
-                  <th class="p-3">메모</th>
-                  <th class="p-3 text-center">관리</th>
-                </tr>
-              </thead>
-              <tbody id="admin-table-body" class="divide-y divide-slate-200 bg-white">
-                <!-- Dynamic Rows -->
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-      </div>
-
-    </section>
-
-  </main>
-
-  <!-- Footer -->
-  <footer class="bg-slate-800 text-slate-400 py-6 mt-12 text-center text-xs">
-    <div class="max-w-6xl mx-auto px-4">
-      <p>한국외국어대학교 노동조합(2ne1)</p>
-      <p class="mt-1 text-slate-500">문의: 노동조합 사무실 | TEL:02-2173-2611 | hufslabor@hufs.ac.kr</p>
-    </div>
-  </footer>
-
-  <!-- Admin Password Modal -->
-  <div id="admin-login-modal" class="hidden fixed inset-0 z-[60] bg-slate-900/60 flex items-center justify-center px-4" onclick="if(event.target===this) closeAdminLogin()">
-    <div class="bg-white rounded-2xl shadow-2xl w-full max-w-sm p-6" role="dialog" aria-modal="true" aria-labelledby="admin-login-title">
-      <div class="flex items-center gap-3 mb-4">
-        <div class="w-10 h-10 rounded-lg bg-hufs-lightBlue text-hufs-navy flex items-center justify-center">
-          <i class="fa-solid fa-lock"></i>
-        </div>
-        <div>
-          <h3 id="admin-login-title" class="text-base font-bold text-slate-800">관리자 확인</h3>
-          <p class="text-xs text-slate-500">비밀번호를 입력해 주세요.</p>
-        </div>
-      </div>
-      <form onsubmit="handleAdminLogin(event)" class="space-y-3">
-        <input type="password" id="admin-password-input" inputmode="numeric" autocomplete="off" placeholder="비밀번호"
-               class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-hufs-blue text-base tracking-widest">
-        <p id="admin-login-error" class="hidden text-xs font-semibold text-rose-600 flex items-center gap-1">
-          <i class="fa-solid fa-circle-exclamation"></i> 비밀번호가 올바르지 않습니다.
-        </p>
-        <div class="grid grid-cols-2 gap-2 pt-1">
-          <button type="button" onclick="closeAdminLogin()" class="py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-600 text-sm font-semibold transition">취소</button>
-          <button type="submit" class="py-2.5 rounded-xl bg-hufs-navy hover:bg-hufs-blue text-white text-sm font-bold transition">확인</button>
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <!-- Notification Toast -->
-  <div id="toast" class="fixed bottom-5 right-5 transform translate-y-20 opacity-0 transition-all duration-300 bg-slate-900 text-white px-5 py-3.5 rounded-xl shadow-2xl flex items-center gap-3 z-50">
-    <i id="toast-icon" class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
-    <span id="toast-msg" class="text-sm font-medium">성공적으로 제출되었습니다.</span>
-  </div>
-
-  <script>
-    const rawSeoulData = [
-      { round: 1, date: '2026-09-30', day: '수', name: '김학중', affiliation: '한국외대', dept: '학술정보팀', phone: '010-8750-1522', email: 'crane0@hanmail.net' },
-      { round: 1, date: '2026-09-30', day: '수', name: '김문배', affiliation: '한국외대', dept: '인권센터', phone: '010-8609-0633', email: 'mbc@hufs.ac.kr' },
-      { round: 1, date: '2026-09-30', day: '수', name: '황병륵', affiliation: '한국외대', dept: '시설관리팀', phone: '010-3896-3864', email: 'sperd1@hufs.ac.kr' },
-      { round: 1, date: '2026-09-30', day: '수', name: '최미옥', affiliation: '한국외대', dept: '원스톱서비스센터', phone: '010-2728-4043', email: 'mochoi@hufs.ac.kr' },
-      { round: 1, date: '2026-09-30', day: '수', name: '황순진', affiliation: '후생과', dept: '후생과(사무실)', phone: '010-9245-1206', email: 'soonjin@hufs.ac.kr' },
-      { round: 1, date: '2026-09-30', day: '수', name: '정준애', affiliation: '한국외대', dept: '학사종합지원센터(서울)', phone: '010-9500-4778', email: 'jjlove@hufs.ac.kr' },
-      { round: 1, date: '2026-09-30', day: '수', name: '표영환', affiliation: '한국외대', dept: '시설관리팀', phone: '010-7137-3951', email: 'pooh40@hufs.ac.kr' },
-      { round: 2, date: '2026-10-07', day: '수', name: '권명선', affiliation: '한국외대', dept: '학술정보팀', phone: '010-7765-4324', email: 'sunup03@hufs.ac.kr' },
-      { round: 2, date: '2026-10-07', day: '수', name: '황우정', affiliation: '한국외대', dept: '특수외국어교육진흥원운영팀', phone: '010-7560-5043', email: 'stmhwj@hufs.ac.kr' },
-      { round: 2, date: '2026-10-07', day: '수', name: '김윤정', affiliation: '한국외대', dept: '정보전략팀', phone: '010-7142-2947', email: 'yjhappy@hufs.ac.kr' },
-      { round: 2, date: '2026-10-07', day: '수', name: '백종훈', affiliation: '한국외대', dept: '연구지원1팀', phone: '010-3278-3101', email: 'hun@hufs.ac.kr' },
-      { round: 2, date: '2026-10-07', day: '수', name: '이동석', affiliation: '한국외대', dept: '사업본부운영3팀 국제사회교육원', phone: '010-2719-7943', email: 'hufszoro@hufs.ac.kr' },
-      { round: 2, date: '2026-10-07', day: '수', name: '오승경', affiliation: '한국외대', dept: '대학원사무1팀 통번역대학원', phone: '010-3235-7157', email: 'ohsk@hufs.ac.kr' },
-      { round: 2, date: '2026-10-07', day: '수', name: '이은주', affiliation: '한국외대', dept: '학술정보팀', phone: '010-7334-9911', email: 'kujira@hanmail.net' },
-      { round: 3, date: '2026-10-14', day: '수', name: '최우현', affiliation: '한국외대', dept: '정보지원팀(서울)', phone: '010-9447-3472', email: 'yukiya00@naver.com' },
-      { round: 3, date: '2026-10-14', day: '수', name: '박해숙', affiliation: '산학협력단', dept: '연구지원1팀', phone: '010-8896-8152', email: 'raphs@hufs.ac.kr' },
-      { round: 3, date: '2026-10-14', day: '수', name: '강동균', affiliation: '한국외대', dept: '학술정보팀', phone: '010-7310-9987', email: 'dkkang@hufs.ac.kr' },
-      { round: 3, date: '2026-10-14', day: '수', name: '전소은', affiliation: '한국외대', dept: '학술정보팀(법학도서관)', phone: '010-9872-3023', email: 'sunshine@hufs.ac.kr' },
-      { round: 3, date: '2026-10-14', day: '수', name: '고경숙', affiliation: '한국외대', dept: '법전원 학생지도센터', phone: '010-9363-1977', email: 'deviko@hufs.ac.kr' },
-      { round: 3, date: '2026-10-14', day: '수', name: '천남영', affiliation: '한국외대', dept: '학술정보팀', phone: '010-5002-3183', email: 'agatha@hufs.ac.kr' },
-      { round: 3, date: '2026-10-14', day: '수', name: '최윤진', affiliation: '한국외대', dept: '교육지원팀', phone: '010-5644-0196', email: 'cyjhufs@hufs.ac.kr' },
-      { round: 4, date: '2026-10-21', day: '수', name: '조미정', affiliation: '후생과', dept: '후생과(인문관)', phone: '010-2486-9745', email: 'chomjsh@hufs.ac.kr' },
-      { round: 4, date: '2026-10-21', day: '수', name: '성승현', affiliation: '한국외대', dept: '사업본부운영1팀(FLEX)', phone: '010-8532-2184', email: 'potatohyun@hanmail.net' },
-      { round: 4, date: '2026-10-21', day: '수', name: '이윤재', affiliation: '한국외대', dept: '학술정보팀', phone: '010-5215-6881', email: 'yjlee@hufs.ac.kr' },
-      { round: 4, date: '2026-10-21', day: '수', name: '윤소영', affiliation: '한국외대', dept: '학술정보팀', phone: '010-2770-2646', email: 'rbcks17@hufs.ac.kr' },
-      { round: 4, date: '2026-10-21', day: '수', name: '한석수', affiliation: '한국외대', dept: '정보시스템팀', phone: '010-2745-5635', email: 'stonewat@hufs.ac.kr' },
-      { round: 4, date: '2026-10-21', day: '수', name: '장혜경', affiliation: '한국외대', dept: '국제학사 학사운영팀', phone: '010-9978-1126', email: 'yupanc@hanmail.net' },
-      { round: 4, date: '2026-10-21', day: '수', name: '윤정욱', affiliation: '한국외대', dept: '시설관리팀', phone: '010-9152-3388', email: 'scoco337@hufs.ac.kr' },
-      { round: 5, date: '2026-10-28', day: '수', name: '이종원', affiliation: '한국외대', dept: '건설기획팀', phone: '010-6264-5064', email: 'jongw99@hufs.ac.kr' },
-      { round: 5, date: '2026-10-28', day: '수', name: '김혜정', affiliation: '한국외대', dept: '안전보건관리팀', phone: '010-9733-4920', email: 'hufshealth@hufs.ac.kr' },
-      { round: 5, date: '2026-10-28', day: '수', name: '박진홍', affiliation: '한국외대', dept: '학생지원팀', phone: '010-9076-0624', email: 'edpark@hufs.ac.kr' },
-      { round: 5, date: '2026-10-28', day: '수', name: '두경훈', affiliation: '한국외대', dept: '교무행정팀(서울)', phone: '010-2126-3772', email: 'doogey@hufs.ac.kr' },
-      { round: 5, date: '2026-10-28', day: '수', name: '김우종', affiliation: '한국외대', dept: '입학팀', phone: '010-8771-8080', email: 'kwj80@hufs.ac.kr' },
-      { round: 5, date: '2026-10-28', day: '수', name: '최원', affiliation: '한국외대', dept: '정보시스템팀', phone: '010-9089-2818', email: 'bob512@hufs.ac.kr' },
-      { round: 5, date: '2026-10-28', day: '수', name: '조용성', affiliation: '한국외대', dept: '세계민속박물관', phone: '010-6225-2683', email: 'archives@hufs.ac.kr' },
-      { round: 6, date: '2026-11-04', day: '수', name: '맹민호', affiliation: '한국외대', dept: '입학팀', phone: '010-7200-7920', email: 'mmh@hufs.ac.kr' },
-      { round: 6, date: '2026-11-04', day: '수', name: '김경필', affiliation: '한국외대', dept: '학사종합지원센터(서울)', phone: '010-2702-2106', email: 'feelzzang@hufs.ac.kr' },
-      { round: 6, date: '2026-11-04', day: '수', name: '허민', affiliation: '한국외대', dept: '정보전략팀', phone: '010-8532-0366', email: 'atz4@hufs.ac.kr' },
-      { round: 6, date: '2026-11-04', day: '수', name: '김민경', affiliation: '한국외대', dept: '입학팀', phone: '010-5167-5532', email: 'eva082@hufs.ac.kr' },
-      { round: 6, date: '2026-11-04', day: '수', name: '부지영', affiliation: '한국외대', dept: '진로취업지원센터(서울)', phone: '010-8660-1355', email: 'jyb@hufs.ac.kr' },
-      { round: 6, date: '2026-11-04', day: '수', name: '정정은', affiliation: '한국외대', dept: '전략홍보팀', phone: '010-2531-1404', email: 'jay02@hufs.ac.kr' },
-      { round: 6, date: '2026-11-04', day: '수', name: '정성주', affiliation: '한국외대', dept: '진로취업지원센터(서울)', phone: '010-4505-1300', email: 'sjjung@hufs.ac.kr' },
-      { round: 7, date: '2026-11-11', day: '수', name: '최고원', affiliation: '한국외대', dept: '국제교류팀', phone: '010-2713-0501', email: 'kwchoi@hufs.ac.kr' },
-      { round: 7, date: '2026-11-11', day: '수', name: '김현주', affiliation: '한국외대', dept: '시설관리팀(서울)', phone: '010-3138-7596', email: 'hufshj@hufs.ac.kr' },
-      { round: 7, date: '2026-11-11', day: '수', name: '김재현', affiliation: '한국외대', dept: '대학원사무2팀', phone: '010-2163-7005', email: 'danielkim@hufs.ac.kr' },
-      { round: 7, date: '2026-11-11', day: '수', name: '김재우', affiliation: '한국외대', dept: '사업본부운영2팀', phone: '010-9248-1907', email: 'nakupenda@hufs.ac.kr' },
-      { round: 7, date: '2026-11-11', day: '수', name: '강미리', affiliation: '한국외대', dept: '혁신지원팀', phone: '010-9306-1374', email: 'mrkang@hufs.ac.kr' },
-      { round: 7, date: '2026-11-11', day: '수', name: '위예리', affiliation: '한국외대', dept: '입학팀', phone: '010-2684-0401', email: 'yrw@hufs.ac.kr' },
-      { round: 8, date: '2026-11-18', day: '수', name: '권남도', affiliation: '한국외대', dept: '학술정보팀', phone: '010-3858-9689', email: 'namdo@hufs.ac.kr' },
-      { round: 8, date: '2026-11-18', day: '수', name: '이수영', affiliation: '한국외대', dept: '입학팀', phone: '010-8741-4116', email: 'suie0413@hufs.ac.kr' },
-      { round: 8, date: '2026-11-18', day: '수', name: '기원일', affiliation: '한국외대', dept: '국제입학관리팀', phone: '010-8729-9078', email: 'wonilki85@hufs.ac.kr' },
-      { round: 8, date: '2026-11-18', day: '수', name: '신지아', affiliation: '한국외대', dept: '국제교류팀', phone: '010-9238-7575', email: 'jiashin@hufs.ac.kr' },
-      { round: 8, date: '2026-11-18', day: '수', name: '이지원', affiliation: '한국외대', dept: '외국인유학생종합지원센터', phone: '010-5106-6437', email: 'john@hufs.ac.kr' },
-      { round: 8, date: '2026-11-18', day: '수', name: '김지윤', affiliation: '후생과', dept: '후생과(사무실)', phone: '010-3158-8498', email: 'jy10544@naver.com' },
-      { round: 8, date: '2026-11-18', day: '수', name: '강전길', affiliation: '한국외대', dept: '건설기획팀', phone: '010-2834-1612', email: 'jeonkilkang@hufs.ac.kr' },
-      { round: 9, date: '2026-11-25', day: '수', name: '김재민', affiliation: '한국외대', dept: '대학원 사무1팀', phone: '010-2697-6960', email: 'klara@hufs.ac.kr' },
-      { round: 9, date: '2026-11-25', day: '수', name: '김경렬', affiliation: '한국외대', dept: '재무회계팀', phone: '010-3038-8703', email: 'kimkl@hufs.ac.kr' },
-      { round: 9, date: '2026-11-25', day: '수', name: '김종수', affiliation: '한국외대', dept: '장학팀', phone: '010-9963-8096', email: 'jskim07@hufs.ac.kr' },
-      { round: 9, date: '2026-11-25', day: '수', name: '최성용', affiliation: '한국외대', dept: '입학팀', phone: '010-6261-7769', email: 'trustchoi007@hufs.ac.kr' },
-      { round: 9, date: '2026-11-25', day: '수', name: '이병우', affiliation: '한국외대', dept: '정보시스템팀', phone: '010-2449-8656', email: 'slekzmzm@hufs.ac.kr' },
-      { round: 9, date: '2026-11-25', day: '수', name: '이혜원', affiliation: '산학협력단', dept: '연구지원1팀', phone: '010-7341-0328', email: 'lhw0328@hufs.ac.kr' },
-      { round: 9, date: '2026-11-25', day: '수', name: '박상희', affiliation: '한국외대', dept: '대학원사무1팀', phone: '010-8833-3506', email: 'pshee@hufs.ac.kr' },
-      { round: 10, date: '2026-12-02', day: '수', name: '김수진', affiliation: '한국외대', dept: '입학팀', phone: '010-3241-5187', email: 'soojin1213@hufs.ac.kr' },
-      { round: 10, date: '2026-12-02', day: '수', name: '이주연', affiliation: '산학협력단', dept: '연구지원1팀', phone: '010-9900-0394', email: 'joyn1024@hufs.ac.kr' },
-      { round: 10, date: '2026-12-02', day: '수', name: '한상윤', affiliation: '한국외대', dept: '대학원사무2팀(KFL대학원)', phone: '010-9963-9184', email: 'turbo@hufs.ac.kr' },
-      { round: 10, date: '2026-12-02', day: '수', name: '손소은', affiliation: '한국외대', dept: '예산조정팀', phone: '010-9279-8680', email: 'doublesson@hufs.ac.kr' },
-      { round: 10, date: '2026-12-02', day: '수', name: '김세희', affiliation: '지식출판콘텐츠원', dept: '경영기획팀', phone: '010-6804-2522', email: 'sehi7@naver.com' },
-      { round: 10, date: '2026-12-02', day: '수', name: '김재환', affiliation: '한국외대', dept: '시설관리팀(서울)', phone: '010-6372-9693', email: 'woghks0221@hufs.ac.kr' },
-      { round: 10, date: '2026-12-02', day: '수', name: '박종훈', affiliation: '한국외대', dept: '정보시스템팀', phone: '010-2592-2518', email: 'jhp2592@hufs.ac.kr' },
-      { round: 11, date: '2026-12-09', day: '수', name: '장혜정', affiliation: '지식출판콘텐츠원', dept: '지식출판콘텐츠원', phone: '010-6519-0710', email: 'hjung07100@gmail.com' },
-      { round: 11, date: '2026-12-09', day: '수', name: '송다영', affiliation: '한국외대', dept: '학술정보팀', phone: '010-7192-0478', email: 'dysong@hufs.ac.kr' },
-      { round: 11, date: '2026-12-09', day: '수', name: '김규리', affiliation: '산학협력단', dept: '연구지원1팀', phone: '010-8416-5247', email: 'guswnl@hufs.ac.kr' },
-      { round: 11, date: '2026-12-09', day: '수', name: '박수혜', affiliation: '한국외대', dept: '국제입학관리팀', phone: '010-9249-8717', email: 'psh0415@hufs.ac.kr' },
-      { round: 11, date: '2026-12-09', day: '수', name: '김혜진', affiliation: '한국외대', dept: '사업본부운영1팀', phone: '010-8546-3335', email: 'hjkim24@hufs.ac.kr' },
-      { round: 11, date: '2026-12-09', day: '수', name: '안원모', affiliation: '한국외대', dept: '학생지원팀', phone: '010-5105-9411', email: 'onemore@hufs.ac.kr' },
-      { round: 11, date: '2026-12-09', day: '수', name: '안시우', affiliation: '한국외대', dept: '정보전략팀', phone: '010-7755-2860', email: 'siwoo.ahn@hufs.ac.kr' },
-      { round: 12, date: '2026-12-16', day: '수', name: '옥가은', affiliation: '한국외대', dept: '입학팀', phone: '010-4661-1075', email: 'okge1021@hufs.ac.kr' },
-      { round: 12, date: '2026-12-16', day: '수', name: '박은지', affiliation: '한국외대', dept: '정보시스템팀', phone: '010-5590-9251', email: 'ejbm2013@hufs.ac.kr' },
-      { round: 12, date: '2026-12-16', day: '수', name: '김수연', affiliation: '한국외대', dept: '총괄지원팀', phone: '010-5496-3959', email: 'sooyeon-95@hufs.ac.kr' },
-      { round: 12, date: '2026-12-16', day: '수', name: '박정민', affiliation: '한국외대', dept: '교육지원팀', phone: '010-6768-3067', email: 'jmparkk@hufs.ac.kr' },
-      { round: 12, date: '2026-12-16', day: '수', name: '김태규', affiliation: '한국외대', dept: '정보시스템팀', phone: '010-9753-1677', email: 'xorb269@hufs.ac.kr' },
-      { round: 12, date: '2026-12-16', day: '수', name: '이시호', affiliation: '한국외대', dept: '정보시스템팀', phone: '010-9798-3488', email: 'lsh97@hufs.ac.kr' },
-      { round: 12, date: '2026-12-16', day: '수', name: '김동욱', affiliation: '한국외대', dept: '총괄지원팀(서울)', phone: '010-8615-2283', email: '2025033@hufs.ac.kr' },
-      { round: 13, date: '2026-12-23', day: '수', name: '배승주', affiliation: '한국외대', dept: '평가감사팀', phone: '010-4017-9847', email: 'negen@hufs.ac.kr' },
-      { round: 13, date: '2026-12-23', day: '수', name: '김지현', affiliation: '한국외대', dept: '장학팀', phone: '010-6631-2747', email: 'jinaaaaan@hufs.ac.kr' },
-      { round: 13, date: '2026-12-23', day: '수', name: '권소희', affiliation: '한국외대', dept: '정보시스템팀', phone: '010-6533-1928', email: 'soheek@hufs.ac.kr' },
-      { round: 13, date: '2026-12-23', day: '수', name: '최선웅', affiliation: '한국외대', dept: '국제입학관리팀', phone: '010-9817-4500', email: 'swchoi98@hufs.ac.kr' },
-      { round: 13, date: '2026-12-23', day: '수', name: '김연우', affiliation: '한국외대', dept: '진로취업지원센터(서울)', phone: '010-2601-2714', email: 'kyw@hufs.ac.kr' },
-      { round: 13, date: '2026-12-23', day: '수', name: '한혜수', affiliation: '한국외대', dept: '대학원사무1팀(일반대학원)', phone: '010-3796-8535', email: 'yoohan@hufs.ac.kr' },
-      { round: 13, date: '2026-12-23', day: '수', name: '장예나', affiliation: '한국외대', dept: '전략기획팀 겸 국책사업통합추진단', phone: '010-5340-6327', email: 'yena@hufs.ac.kr' },
-      { round: 13, date: '2026-12-23', day: '수', name: '성보민', affiliation: '한국외대', dept: '학사종합지원센터(서울)', phone: '010-3622-1689', email: 'bomin@hufs.ac.kr' }
-    ];
-
-    const rawGlobalData = [
-      { round: 1, date: '2026-10-01', day: '목', name: '엄기원', affiliation: '한국외대', dept: '학술정보팀', phone: '010-3996-5907', email: 'schein@hufs.ac.kr' },
-      { round: 1, date: '2026-10-01', day: '목', name: '이승헌', affiliation: '한국외대', dept: 'HUFS Dorm 학사운영팀', phone: '010-4707-5867', email: 'stahat@hufs.ac.kr' },
-      { round: 1, date: '2026-10-01', day: '목', name: '정병오', affiliation: '한국외대', dept: '시설관리팀', phone: '010-4008-1729', email: 'dolce70@hufs.ac.kr' },
-      { round: 1, date: '2026-10-01', day: '목', name: '구봉우', affiliation: '한국외대', dept: '정보지원팀(글로벌)', phone: '010-9079-2664', email: 'bong@hufs.ac.kr' },
-      { round: 1, date: '2026-10-01', day: '목', name: '명형택', affiliation: '한국외대', dept: '학술정보팀', phone: '010-9137-5429', email: 'htmyong@hufs.ac.kr' },
-      { round: 1, date: '2026-10-01', day: '목', name: '성금주', affiliation: '한국외대', dept: '학술정보팀', phone: '010-2707-9244', email: 'ringo1004@hufs.ac.kr' },
-      { round: 2, date: '2026-10-08', day: '목', name: '김경협', affiliation: '한국외대', dept: '정보지원팀(글로벌)', phone: '010-9134-6236', email: 'akin01@hufs.ac.kr' },
-      { round: 2, date: '2026-10-08', day: '목', name: '김지숙', affiliation: '산학협력단', dept: '산학지원팀(글로벌)', phone: '010-3245-0959', email: 'kimjs1215@hufs.ac.kr' },
-      { round: 2, date: '2026-10-08', day: '목', name: '한지영', affiliation: '한국외대', dept: '진로취업지원센터(글로벌)', phone: '010-6654-9927', email: 'jyhan@hufs.ac.kr' },
-      { round: 2, date: '2026-10-08', day: '목', name: '이은재', affiliation: '한국외대', dept: '시설관리팀', phone: '010-3663-5331', email: 'entropy@hufs.ac.kr' },
-      { round: 2, date: '2026-10-08', day: '목', name: '문태현', affiliation: '한국외대', dept: '학술정보팀', phone: '010-6307-6365', email: 'mth94@hanmail.net' },
-      { round: 2, date: '2026-10-08', day: '목', name: '정재원', affiliation: '한국외대', dept: '학사종합지원센터', phone: '010-3286-9431', email: 'jaeny509@hufs.ac.kr' },
-      { round: 2, date: '2026-10-08', day: '목', name: '오윤희', affiliation: '한국외대', dept: '학생지원.장학팀', phone: '010-6595-5975', email: 'yhoh@hufs.ac.kr' },
-      { round: 3, date: '2026-10-15', day: '목', name: '변민선', affiliation: '한국외대', dept: '학사종합지원센터', phone: '010-9188-1335', email: 'minsun@hufs.ac.kr' },
-      { round: 3, date: '2026-10-15', day: '목', name: '유희라', affiliation: '한국외대', dept: '시설관리팀', phone: '010-6678-4227', email: 'ryu0508@hufs.ac.kr' },
-      { round: 3, date: '2026-10-15', day: '목', name: '이지영', affiliation: '한국외대', dept: '교무행정팀(글로벌)', phone: '010-3834-1188', email: 'jyimp@hufs.ac.kr' },
-      { round: 3, date: '2026-10-15', day: '목', name: '박정선', affiliation: '한국외대', dept: '학술정보팀', phone: '010-6769-0823', email: 'jspark@hufs.ac.kr' },
-      { round: 3, date: '2026-10-15', day: '목', name: '박은주', affiliation: '한국외대', dept: '총괄지원팀(글로벌)', phone: '010-3412-0320', email: 'eunju@hufs.ac.kr' },
-      { round: 3, date: '2026-10-15', day: '목', name: '박정혜', affiliation: '한국외대', dept: '학술정보팀', phone: '010-4931-3159', email: 'jhpark@hufs.ac.kr' },
-      { round: 3, date: '2026-10-15', day: '목', name: '진수희', affiliation: '산학협력단', dept: '산학지원팀(글로벌)', phone: '010-3399-4876', email: 'jsh487@hufs.ac.kr' },
-      { round: 4, date: '2026-10-22', day: '목', name: '김해옥', affiliation: '산학협력단', dept: '연구지원2팀', phone: '010-3394-3488', email: 'kimhaiok@hufs.ac.kr' },
-      { round: 4, date: '2026-10-22', day: '목', name: '이행도', affiliation: '한국외대', dept: 'HUFS Dorm 학사운영팀', phone: '010-9980-1260', email: 'nalgi74@hufs.ac.kr' },
-      { round: 4, date: '2026-10-22', day: '목', name: '김미래', affiliation: '한국외대', dept: '학사종합지원센터', phone: '010-3338-4734', email: 'future56@hufs.ac.kr' },
-      { round: 4, date: '2026-10-22', day: '목', name: '임서현', affiliation: '한국외대', dept: '학사종합지원센터', phone: '010-5141-9049', email: 'lsh0613@hufs.ac.kr' },
-      { round: 4, date: '2026-10-22', day: '목', name: '유광옥', affiliation: '한국외대', dept: '교육지원팀', phone: '010-2354-3251', email: 'mylife5055@hufs.ac.kr' },
-      { round: 4, date: '2026-10-22', day: '목', name: '조수훈', affiliation: '한국외대', dept: '학생지원.장학팀', phone: '010-7210-7146', email: 'dreamersoo@hufs.ac.kr' },
-      { round: 4, date: '2026-10-22', day: '목', name: '고희경', affiliation: '산학협력단', dept: '기획총괄팀(글로벌)', phone: '010-6279-0610', email: 'hee0610@hufs.ac.kr' },
-      { round: 5, date: '2026-10-29', day: '목', name: '송드보람', affiliation: '한국외대', dept: '진로취업지원센터(서울)', phone: '010-7436-8864', email: 'deboram@hufs.ac.kr' },
-      { round: 5, date: '2026-10-29', day: '목', name: '조모란', affiliation: '한국외대', dept: '진로취업지원센터(글로벌)', phone: '010-8722-9671', email: 'jmr@hufs.ac.kr' },
-      { round: 5, date: '2026-10-29', day: '목', name: '한희태', affiliation: '한국외대', dept: '시설관리팀(글로벌)', phone: '010-4806-2374', email: 'ymbs007@hufs.ac.kr' },
-      { round: 5, date: '2026-10-29', day: '목', name: '이희승', affiliation: '한국외대', dept: '학사종합지원센터(글로벌)', phone: '010-2066-9751', email: '2hs@hufs.ac.kr' },
-      { round: 5, date: '2026-10-29', day: '목', name: '박민지', affiliation: '한국외대', dept: '총괄지원팀', phone: '010-9229-2324', email: 'minjipark85@hufs.ac.kr' },
-      { round: 5, date: '2026-10-29', day: '목', name: '이지은', affiliation: '한국외대', dept: '학생지원.장학팀', phone: '010-2055-2549', email: 'rosie@hufs.ac.kr' },
-      { round: 5, date: '2026-10-29', day: '목', name: '박희성', affiliation: '한국외대', dept: '총괄지원팀', phone: '010-3214-1022', email: 'new_walker@hanmail.net' },
-      { round: 6, date: '2026-11-05', day: '목', name: '김보람', affiliation: '산학협력단', dept: '연구지원2팀', phone: '010-5192-7252', email: 'boram723@hufs.ac.kr' },
-      { round: 6, date: '2026-11-05', day: '목', name: '정문규', affiliation: '한국외대', dept: '학사종합지원센터', phone: '010-2460-7787', email: 'cadepend@hufs.ac.kr' },
-      { round: 6, date: '2026-11-05', day: '목', name: '송재민', affiliation: '산학협력단', dept: '산학지원팀(글로벌)', phone: '010-6476-7130', email: 'sjm@hufs.ac.kr' },
-      { round: 6, date: '2026-11-05', day: '목', name: '임주리', affiliation: '산학협력단', dept: '연구지원2팀', phone: '010-9623-2838', email: 'juri1123@hufs.ac.kr' },
-      { round: 6, date: '2026-11-05', day: '목', name: '이혜승', affiliation: '산학협력단', dept: '연구지원2팀', phone: '010-6549-8101', email: 'seung417@hufs.ac.kr' },
-      { round: 6, date: '2026-11-05', day: '목', name: '김혜원', affiliation: '산학협력단', dept: '연구지원2팀', phone: '010-4131-6808', email: 'sarvenaz12@hufs.ac.kr' },
-      { round: 6, date: '2026-11-05', day: '목', name: '강용현', affiliation: '한국외대', dept: '시설관리팀', phone: '010-7303-5471', email: 'da512@hufs.ac.kr' },
-      { round: 6, date: '2026-11-05', day: '목', name: '김나래', affiliation: '산학협력단', dept: '연구지원1팀', phone: '010-9979-0528', email: 'narae528@hufs.ac.kr' }
-    ];
-
-    // 행사 시간 및 캠퍼스별 장소
-    const MEAL_TIME = '12:00';
-    const LOCATIONS = {
-      '서울': '서울캠퍼스 본관 602호 노동조합 사무실',
-      '글로벌': '글로벌캠퍼스 백년관 922호 노동조합 사무실'
-    };
-
-    let participants = [];
-    let selectedParticipant = null;
-    let currentAdminCampus = 'ALL';
-
-    // Build Master Dataset with unique IDs
-    function initData() {
-      const seoul = rawSeoulData.map((item, idx) => ({
-        id: `SEOUL_${idx}_${item.name}`,
-        campus: '서울',
-        ...item
-      }));
-
-      const global = rawGlobalData.map((item, idx) => ({
-        id: `GLOBAL_${idx}_${item.name}`,
-        campus: '글로벌',
-        ...item
-      }));
-
-      const masterList = [...seoul, ...global];
-
-      // Load saved RSVP responses from LocalStorage
-      const savedRSVP = JSON.parse(localStorage.getItem('hufs_union_rsvp') || '{}');
-
-      participants = masterList.map(p => {
-        const saved = savedRSVP[p.id];
-        return {
-          ...p,
-          status: saved ? saved.status : '미응답',
-          memo: saved ? saved.memo : '',
-          updatedAt: saved ? saved.updatedAt : null
-        };
+  // Firestore 실시간 구독: 누군가 응답을 제출/초기화하면 모든 브라우저(관리자 포함)에 즉시 반영
+  onSnapshot(rsvpCollection, (snapshot) => {
+    if (typeof window.applyRemoteRSVP === 'function') {
+      const savedMap = {};
+      snapshot.forEach(docSnap => {
+        savedMap[docSnap.id] = docSnap.data();
       });
+      window.applyRemoteRSVP(savedMap);
     }
+  });
+</script>
 
-    document.addEventListener('DOMContentLoaded', () => {
-      initData();
-      setupSearchEvents();
-      updateAdminDashboard();
-    });
+<script>
 
-    // 관리자 페이지 비밀번호
-    const ADMIN_PASSWORD = '2611';
-    let adminUnlocked = false;
+const rawSeoulData = [
+{ round: 1, date: '2026-09-30', day: '수', name: '김학중', affiliation: '한국외대', dept: '학술정보팀', phone: '010-8750-1522', email: 'crane0@hanmail.net' },
+{ round: 1, date: '2026-09-30', day: '수', name: '김문배', affiliation: '한국외대', dept: '인권센터', phone: '010-8609-0633', email: 'mbc@hufs.ac.kr' },
+{ round: 1, date: '2026-09-30', day: '수', name: '황병륵', affiliation: '한국외대', dept: '시설관리팀', phone: '010-3896-3864', email: 'sperd1@hufs.ac.kr' },
+{ round: 1, date: '2026-09-30', day: '수', name: '최미옥', affiliation: '한국외대', dept: '원스톱서비스센터', phone: '010-2728-4043', email: 'mochoi@hufs.ac.kr' },
+{ round: 1, date: '2026-09-30', day: '수', name: '황순진', affiliation: '후생과', dept: '후생과(사무실)', phone: '010-9245-1206', email: 'soonjin@hufs.ac.kr' },
+{ round: 1, date: '2026-09-30', day: '수', name: '정준애', affiliation: '한국외대', dept: '학사종합지원센터(서울)', phone: '010-9500-4778', email: 'jjlove@hufs.ac.kr' },
+{ round: 1, date: '2026-09-30', day: '수', name: '표영환', affiliation: '한국외대', dept: '시설관리팀', phone: '010-7137-3951', email: 'pooh40@hufs.ac.kr' },
+{ round: 2, date: '2026-10-07', day: '수', name: '권명선', affiliation: '한국외대', dept: '학술정보팀', phone: '010-7765-4324', email: 'sunup03@hufs.ac.kr' },
+{ round: 2, date: '2026-10-07', day: '수', name: '황우정', affiliation: '한국외대', dept: '특수외국어교육진흥원운영팀', phone: '010-7560-5043', email: 'stmhwj@hufs.ac.kr' },
+{ round: 2, date: '2026-10-07', day: '수', name: '김윤정', affiliation: '한국외대', dept: '정보전략팀', phone: '010-7142-2947', email: 'yjhappy@hufs.ac.kr' },
+{ round: 2, date: '2026-10-07', day: '수', name: '백종훈', affiliation: '한국외대', dept: '연구지원1팀', phone: '010-3278-3101', email: 'hun@hufs.ac.kr' },
+{ round: 2, date: '2026-10-07', day: '수', name: '이동석', affiliation: '한국외대', dept: '사업본부운영3팀 국제사회교육원', phone: '010-2719-7943', email: 'hufszoro@hufs.ac.kr' },
+{ round: 2, date: '2026-10-07', day: '수', name: '오승경', affiliation: '한국외대', dept: '대학원사무1팀 통번역대학원', phone: '010-3235-7157', email: 'ohsk@hufs.ac.kr' },
+{ round: 2, date: '2026-10-07', day: '수', name: '이은주', affiliation: '한국외대', dept: '학술정보팀', phone: '010-7334-9911', email: 'kujira@hanmail.net' },
+{ round: 3, date: '2026-10-14', day: '수', name: '최우현', affiliation: '한국외대', dept: '정보지원팀(서울)', phone: '010-9447-3472', email: 'yukiya00@naver.com' },
+{ round: 3, date: '2026-10-14', day: '수', name: '박해숙', affiliation: '산학협력단', dept: '연구지원1팀', phone: '010-8896-8152', email: 'raphs@hufs.ac.kr' },
+{ round: 3, date: '2026-10-14', day: '수', name: '강동균', affiliation: '한국외대', dept: '학술정보팀', phone: '010-7310-9987', email: 'dkkang@hufs.ac.kr' },
+{ round: 3, date: '2026-10-14', day: '수', name: '전소은', affiliation: '한국외대', dept: '학술정보팀(법학도서관)', phone: '010-9872-3023', email: 'sunshine@hufs.ac.kr' },
+{ round: 3, date: '2026-10-14', day: '수', name: '고경숙', affiliation: '한국외대', dept: '법전원 학생지도센터', phone: '010-9363-1977', email: 'deviko@hufs.ac.kr' },
+{ round: 3, date: '2026-10-14', day: '수', name: '천남영', affiliation: '한국외대', dept: '학술정보팀', phone: '010-5002-3183', email: 'agatha@hufs.ac.kr' },
+{ round: 3, date: '2026-10-14', day: '수', name: '최윤진', affiliation: '한국외대', dept: '교육지원팀', phone: '010-5644-0196', email: 'cyjhufs@hufs.ac.kr' },
+{ round: 4, date: '2026-10-21', day: '수', name: '조미정', affiliation: '후생과', dept: '후생과(인문관)', phone: '010-2486-9745', email: 'chomjsh@hufs.ac.kr' },
+{ round: 4, date: '2026-10-21', day: '수', name: '성승현', affiliation: '한국외대', dept: '사업본부운영1팀(FLEX)', phone: '010-8532-2184', email: 'potatohyun@hanmail.net' },
+{ round: 4, date: '2026-10-21', day: '수', name: '이윤재', affiliation: '한국외대', dept: '학술정보팀', phone: '010-5215-6881', email: 'yjlee@hufs.ac.kr' },
+{ round: 4, date: '2026-10-21', day: '수', name: '윤소영', affiliation: '한국외대', dept: '학술정보팀', phone: '010-2770-2646', email: 'rbcks17@hufs.ac.kr' },
+{ round: 4, date: '2026-10-21', day: '수', name: '한석수', affiliation: '한국외대', dept: '정보시스템팀', phone: '010-2745-5635', email: 'stonewat@hufs.ac.kr' },
+{ round: 4, date: '2026-10-21', day: '수', name: '장혜경', affiliation: '한국외대', dept: '국제학사 학사운영팀', phone: '010-9978-1126', email: 'yupanc@hanmail.net' },
+{ round: 4, date: '2026-10-21', day: '수', name: '윤정욱', affiliation: '한국외대', dept: '시설관리팀', phone: '010-9152-3388', email: 'scoco337@hufs.ac.kr' },
+{ round: 5, date: '2026-10-28', day: '수', name: '이종원', affiliation: '한국외대', dept: '건설기획팀', phone: '010-6264-5064', email: 'jongw99@hufs.ac.kr' },
+{ round: 5, date: '2026-10-28', day: '수', name: '김혜정', affiliation: '한국외대', dept: '안전보건관리팀', phone: '010-9733-4920', email: 'hufshealth@hufs.ac.kr' },
+{ round: 5, date: '2026-10-28', day: '수', name: '박진홍', affiliation: '한국외대', dept: '학생지원팀', phone: '010-9076-0624', email: 'edpark@hufs.ac.kr' },
+{ round: 5, date: '2026-10-28', day: '수', name: '두경훈', affiliation: '한국외대', dept: '교무행정팀(서울)', phone: '010-2126-3772', email: 'doogey@hufs.ac.kr' },
+{ round: 5, date: '2026-10-28', day: '수', name: '김우종', affiliation: '한국외대', dept: '입학팀', phone: '010-8771-8080', email: 'kwj80@hufs.ac.kr' },
+{ round: 5, date: '2026-10-28', day: '수', name: '최원', affiliation: '한국외대', dept: '정보시스템팀', phone: '010-9089-2818', email: 'bob512@hufs.ac.kr' },
+{ round: 5, date: '2026-10-28', day: '수', name: '조용성', affiliation: '한국외대', dept: '세계민속박물관', phone: '010-6225-2683', email: 'archives@hufs.ac.kr' },
+{ round: 6, date: '2026-11-04', day: '수', name: '맹민호', affiliation: '한국외대', dept: '입학팀', phone: '010-7200-7920', email: 'mmh@hufs.ac.kr' },
+{ round: 6, date: '2026-11-04', day: '수', name: '김경필', affiliation: '한국외대', dept: '학사종합지원센터(서울)', phone: '010-2702-2106', email: 'feelzzang@hufs.ac.kr' },
+{ round: 6, date: '2026-11-04', day: '수', name: '허민', affiliation: '한국외대', dept: '정보전략팀', phone: '010-8532-0366', email: 'atz4@hufs.ac.kr' },
+{ round: 6, date: '2026-11-04', day: '수', name: '김민경', affiliation: '한국외대', dept: '입학팀', phone: '010-5167-5532', email: 'eva082@hufs.ac.kr' },
+{ round: 6, date: '2026-11-04', day: '수', name: '부지영', affiliation: '한국외대', dept: '진로취업지원센터(서울)', phone: '010-8660-1355', email: 'jyb@hufs.ac.kr' },
+{ round: 6, date: '2026-11-04', day: '수', name: '정정은', affiliation: '한국외대', dept: '전략홍보팀', phone: '010-2531-1404', email: 'jay02@hufs.ac.kr' },
+{ round: 6, date: '2026-11-04', day: '수', name: '정성주', affiliation: '한국외대', dept: '진로취업지원센터(서울)', phone: '010-4505-1300', email: 'sjjung@hufs.ac.kr' },
+{ round: 7, date: '2026-11-11', day: '수', name: '최고원', affiliation: '한국외대', dept: '국제교류팀', phone: '010-2713-0501', email: 'kwchoi@hufs.ac.kr' },
+{ round: 7, date: '2026-11-11', day: '수', name: '김현주', affiliation: '한국외대', dept: '시설관리팀(서울)', phone: '010-3138-7596', email: 'hufshj@hufs.ac.kr' },
+{ round: 7, date: '2026-11-11', day: '수', name: '김재현', affiliation: '한국외대', dept: '대학원사무2팀', phone: '010-2163-7005', email: 'danielkim@hufs.ac.kr' },
+{ round: 7, date: '2026-11-11', day: '수', name: '김재우', affiliation: '한국외대', dept: '사업본부운영2팀', phone: '010-9248-1907', email: 'nakupenda@hufs.ac.kr' },
+{ round: 7, date: '2026-11-11', day: '수', name: '강미리', affiliation: '한국외대', dept: '혁신지원팀', phone: '010-9306-1374', email: 'mrkang@hufs.ac.kr' },
+{ round: 7, date: '2026-11-11', day: '수', name: '위예리', affiliation: '한국외대', dept: '입학팀', phone: '010-2684-0401', email: 'yrw@hufs.ac.kr' },
+{ round: 8, date: '2026-11-18', day: '수', name: '권남도', affiliation: '한국외대', dept: '학술정보팀', phone: '010-3858-9689', email: 'namdo@hufs.ac.kr' },
+{ round: 8, date: '2026-11-18', day: '수', name: '이수영', affiliation: '한국외대', dept: '입학팀', phone: '010-8741-4116', email: 'suie0413@hufs.ac.kr' },
+{ round: 8, date: '2026-11-18', day: '수', name: '기원일', affiliation: '한국외대', dept: '국제입학관리팀', phone: '010-8729-9078', email: 'wonilki85@hufs.ac.kr' },
+{ round: 8, date: '2026-11-18', day: '수', name: '신지아', affiliation: '한국외대', dept: '국제교류팀', phone: '010-9238-7575', email: 'jiashin@hufs.ac.kr' },
+{ round: 8, date: '2026-11-18', day: '수', name: '이지원', affiliation: '한국외대', dept: '외국인유학생종합지원센터', phone: '010-5106-6437', email: 'john@hufs.ac.kr' },
+{ round: 8, date: '2026-11-18', day: '수', name: '김지윤', affiliation: '후생과', dept: '후생과(사무실)', phone: '010-3158-8498', email: 'jy10544@naver.com' },
+{ round: 8, date: '2026-11-18', day: '수', name: '강전길', affiliation: '한국외대', dept: '건설기획팀', phone: '010-2834-1612', email: 'jeonkilkang@hufs.ac.kr' },
+{ round: 9, date: '2026-11-25', day: '수', name: '김재민', affiliation: '한국외대', dept: '대학원 사무1팀', phone: '010-2697-6960', email: 'klara@hufs.ac.kr' },
+{ round: 9, date: '2026-11-25', day: '수', name: '김경렬', affiliation: '한국외대', dept: '재무회계팀', phone: '010-3038-8703', email: 'kimkl@hufs.ac.kr' },
+{ round: 9, date: '2026-11-25', day: '수', name: '김종수', affiliation: '한국외대', dept: '장학팀', phone: '010-9963-8096', email: 'jskim07@hufs.ac.kr' },
+{ round: 9, date: '2026-11-25', day: '수', name: '최성용', affiliation: '한국외대', dept: '입학팀', phone: '010-6261-7769', email: 'trustchoi007@hufs.ac.kr' },
+{ round: 9, date: '2026-11-25', day: '수', name: '이병우', affiliation: '한국외대', dept: '정보시스템팀', phone: '010-2449-8656', email: 'slekzmzm@hufs.ac.kr' },
+{ round: 9, date: '2026-11-25', day: '수', name: '이혜원', affiliation: '산학협력단', dept: '연구지원1팀', phone: '010-7341-0328', email: 'lhw0328@hufs.ac.kr' },
+{ round: 9, date: '2026-11-25', day: '수', name: '박상희', affiliation: '한국외대', dept: '대학원사무1팀', phone: '010-8833-3506', email: 'pshee@hufs.ac.kr' },
+{ round: 10, date: '2026-12-02', day: '수', name: '김수진', affiliation: '한국외대', dept: '입학팀', phone: '010-3241-5187', email: 'soojin1213@hufs.ac.kr' },
+{ round: 10, date: '2026-12-02', day: '수', name: '이주연', affiliation: '산학협력단', dept: '연구지원1팀', phone: '010-9900-0394', email: 'joyn1024@hufs.ac.kr' },
+{ round: 10, date: '2026-12-02', day: '수', name: '한상윤', affiliation: '한국외대', dept: '대학원사무2팀(KFL대학원)', phone: '010-9963-9184', email: 'turbo@hufs.ac.kr' },
+{ round: 10, date: '2026-12-02', day: '수', name: '손소은', affiliation: '한국외대', dept: '예산조정팀', phone: '010-9279-8680', email: 'doublesson@hufs.ac.kr' },
+{ round: 10, date: '2026-12-02', day: '수', name: '김세희', affiliation: '지식출판콘텐츠원', dept: '경영기획팀', phone: '010-6804-2522', email: 'sehi7@naver.com' },
+{ round: 10, date: '2026-12-02', day: '수', name: '김재환', affiliation: '한국외대', dept: '시설관리팀(서울)', phone: '010-6372-9693', email: 'woghks0221@hufs.ac.kr' },
+{ round: 10, date: '2026-12-02', day: '수', name: '박종훈', affiliation: '한국외대', dept: '정보시스템팀', phone: '010-2592-2518', email: 'jhp2592@hufs.ac.kr' },
+{ round: 11, date: '2026-12-09', day: '수', name: '장혜정', affiliation: '지식출판콘텐츠원', dept: '지식출판콘텐츠원', phone: '010-6519-0710', email: 'hjung07100@gmail.com' },
+{ round: 11, date: '2026-12-09', day: '수', name: '송다영', affiliation: '한국외대', dept: '학술정보팀', phone: '010-7192-0478', email: 'dysong@hufs.ac.kr' },
+{ round: 11, date: '2026-12-09', day: '수', name: '김규리', affiliation: '산학협력단', dept: '연구지원1팀', phone: '010-8416-5247', email: 'guswnl@hufs.ac.kr' },
+{ round: 11, date: '2026-12-09', day: '수', name: '박수혜', affiliation: '한국외대', dept: '국제입학관리팀', phone: '010-9249-8717', email: 'psh0415@hufs.ac.kr' },
+{ round: 11, date: '2026-12-09', day: '수', name: '김혜진', affiliation: '한국외대', dept: '사업본부운영1팀', phone: '010-8546-3335', email: 'hjkim24@hufs.ac.kr' },
+{ round: 11, date: '2026-12-09', day: '수', name: '안원모', affiliation: '한국외대', dept: '학생지원팀', phone: '010-5105-9411', email: 'onemore@hufs.ac.kr' },
+{ round: 11, date: '2026-12-09', day: '수', name: '안시우', affiliation: '한국외대', dept: '정보전략팀', phone: '010-7755-2860', email: 'siwoo.ahn@hufs.ac.kr' },
+{ round: 12, date: '2026-12-16', day: '수', name: '옥가은', affiliation: '한국외대', dept: '입학팀', phone: '010-4661-1075', email: 'okge1021@hufs.ac.kr' },
+{ round: 12, date: '2026-12-16', day: '수', name: '박은지', affiliation: '한국외대', dept: '정보시스템팀', phone: '010-5590-9251', email: 'ejbm2013@hufs.ac.kr' },
+{ round: 12, date: '2026-12-16', day: '수', name: '김수연', affiliation: '한국외대', dept: '총괄지원팀', phone: '010-5496-3959', email: 'sooyeon-95@hufs.ac.kr' },
+{ round: 12, date: '2026-12-16', day: '수', name: '박정민', affiliation: '한국외대', dept: '교육지원팀', phone: '010-6768-3067', email: 'jmparkk@hufs.ac.kr' },
+{ round: 12, date: '2026-12-16', day: '수', name: '김태규', affiliation: '한국외대', dept: '정보시스템팀', phone: '010-9753-1677', email: 'xorb269@hufs.ac.kr' },
+{ round: 12, date: '2026-12-16', day: '수', name: '이시호', affiliation: '한국외대', dept: '정보시스템팀', phone: '010-9798-3488', email: 'lsh97@hufs.ac.kr' },
+{ round: 12, date: '2026-12-16', day: '수', name: '김동욱', affiliation: '한국외대', dept: '총괄지원팀(서울)', phone: '010-8615-2283', email: '2025033@hufs.ac.kr' },
+{ round: 13, date: '2026-12-23', day: '수', name: '배승주', affiliation: '한국외대', dept: '평가감사팀', phone: '010-4017-9847', email: 'negen@hufs.ac.kr' },
+{ round: 13, date: '2026-12-23', day: '수', name: '김지현', affiliation: '한국외대', dept: '장학팀', phone: '010-6631-2747', email: 'jinaaaaan@hufs.ac.kr' },
+{ round: 13, date: '2026-12-23', day: '수', name: '권소희', affiliation: '한국외대', dept: '정보시스템팀', phone: '010-6533-1928', email: 'soheek@hufs.ac.kr' },
+{ round: 13, date: '2026-12-23', day: '수', name: '최선웅', affiliation: '한국외대', dept: '국제입학관리팀', phone: '010-9817-4500', email: 'swchoi98@hufs.ac.kr' },
+{ round: 13, date: '2026-12-23', day: '수', name: '김연우', affiliation: '한국외대', dept: '진로취업지원센터(서울)', phone: '010-2601-2714', email: 'kyw@hufs.ac.kr' },
+{ round: 13, date: '2026-12-23', day: '수', name: '한혜수', affiliation: '한국외대', dept: '대학원사무1팀(일반대학원)', phone: '010-3796-8535', email: 'yoohan@hufs.ac.kr' },
+{ round: 13, date: '2026-12-23', day: '수', name: '장예나', affiliation: '한국외대', dept: '전략기획팀 겸 국책사업통합추진단', phone: '010-5340-6327', email: 'yena@hufs.ac.kr' },
+{ round: 13, date: '2026-12-23', day: '수', name: '성보민', affiliation: '한국외대', dept: '학사종합지원센터(서울)', phone: '010-3622-1689', email: 'bomin@hufs.ac.kr' }
+];
 
-    function openAdminLogin() {
-      const modal = document.getElementById('admin-login-modal');
-      const input = document.getElementById('admin-password-input');
-      input.value = '';
-      input.classList.remove('border-rose-500');
-      document.getElementById('admin-login-error').classList.add('hidden');
-      modal.classList.remove('hidden');
-      setTimeout(() => input.focus(), 50);
-    }
+const rawGlobalData = [
+{ round: 1, date: '2026-10-01', day: '목', name: '엄기원', affiliation: '한국외대', dept: '학술정보팀', phone: '010-3996-5907', email: 'schein@hufs.ac.kr' },
+{ round: 1, date: '2026-10-01', day: '목', name: '이승헌', affiliation: '한국외대', dept: 'HUFS Dorm 학사운영팀', phone: '010-4707-5867', email: 'stahat@hufs.ac.kr' },
+{ round: 1, date: '2026-10-01', day: '목', name: '정병오', affiliation: '한국외대', dept: '시설관리팀', phone: '010-4008-1729', email: 'dolce70@hufs.ac.kr' },
+{ round: 1, date: '2026-10-01', day: '목', name: '구봉우', affiliation: '한국외대', dept: '정보지원팀(글로벌)', phone: '010-9079-2664', email: 'bong@hufs.ac.kr' },
+{ round: 1, date: '2026-10-01', day: '목', name: '명형택', affiliation: '한국외대', dept: '학술정보팀', phone: '010-9137-5429', email: 'htmyong@hufs.ac.kr' },
+{ round: 1, date: '2026-10-01', day: '목', name: '성금주', affiliation: '한국외대', dept: '학술정보팀', phone: '010-2707-9244', email: 'ringo1004@hufs.ac.kr' },
+{ round: 2, date: '2026-10-08', day: '목', name: '김경협', affiliation: '한국외대', dept: '정보지원팀(글로벌)', phone: '010-9134-6236', email: 'akin01@hufs.ac.kr' },
+{ round: 2, date: '2026-10-08', day: '목', name: '김지숙', affiliation: '산학협력단', dept: '산학지원팀(글로벌)', phone: '010-3245-0959', email: 'kimjs1215@hufs.ac.kr' },
+{ round: 2, date: '2026-10-08', day: '목', name: '한지영', affiliation: '한국외대', dept: '진로취업지원센터(글로벌)', phone: '010-6654-9927', email: 'jyhan@hufs.ac.kr' },
+{ round: 2, date: '2026-10-08', day: '목', name: '이은재', affiliation: '한국외대', dept: '시설관리팀', phone: '010-3663-5331', email: 'entropy@hufs.ac.kr' },
+{ round: 2, date: '2026-10-08', day: '목', name: '문태현', affiliation: '한국외대', dept: '학술정보팀', phone: '010-6307-6365', email: 'mth94@hanmail.net' },
+{ round: 2, date: '2026-10-08', day: '목', name: '정재원', affiliation: '한국외대', dept: '학사종합지원센터', phone: '010-3286-9431', email: 'jaeny509@hufs.ac.kr' },
+{ round: 2, date: '2026-10-08', day: '목', name: '오윤희', affiliation: '한국외대', dept: '학생지원.장학팀', phone: '010-6595-5975', email: 'yhoh@hufs.ac.kr' },
+{ round: 3, date: '2026-10-15', day: '목', name: '변민선', affiliation: '한국외대', dept: '학사종합지원센터', phone: '010-9188-1335', email: 'minsun@hufs.ac.kr' },
+{ round: 3, date: '2026-10-15', day: '목', name: '유희라', affiliation: '한국외대', dept: '시설관리팀', phone: '010-6678-4227', email: 'ryu0508@hufs.ac.kr' },
+{ round: 3, date: '2026-10-15', day: '목', name: '이지영', affiliation: '한국외대', dept: '교무행정팀(글로벌)', phone: '010-3834-1188', email: 'jyimp@hufs.ac.kr' },
+{ round: 3, date: '2026-10-15', day: '목', name: '박정선', affiliation: '한국외대', dept: '학술정보팀', phone: '010-6769-0823', email: 'jspark@hufs.ac.kr' },
+{ round: 3, date: '2026-10-15', day: '목', name: '박은주', affiliation: '한국외대', dept: '총괄지원팀(글로벌)', phone: '010-3412-0320', email: 'eunju@hufs.ac.kr' },
+{ round: 3, date: '2026-10-15', day: '목', name: '박정혜', affiliation: '한국외대', dept: '학술정보팀', phone: '010-4931-3159', email: 'jhpark@hufs.ac.kr' },
+{ round: 3, date: '2026-10-15', day: '목', name: '진수희', affiliation: '산학협력단', dept: '산학지원팀(글로벌)', phone: '010-3399-4876', email: 'jsh487@hufs.ac.kr' },
+{ round: 4, date: '2026-10-22', day: '목', name: '김해옥', affiliation: '산학협력단', dept: '연구지원2팀', phone: '010-3394-3488', email: 'kimhaiok@hufs.ac.kr' },
+{ round: 4, date: '2026-10-22', day: '목', name: '이행도', affiliation: '한국외대', dept: 'HUFS Dorm 학사운영팀', phone: '010-9980-1260', email: 'nalgi74@hufs.ac.kr' },
+{ round: 4, date: '2026-10-22', day: '목', name: '김미래', affiliation: '한국외대', dept: '학사종합지원센터', phone: '010-3338-4734', email: 'future56@hufs.ac.kr' },
+{ round: 4, date: '2026-10-22', day: '목', name: '임서현', affiliation: '한국외대', dept: '학사종합지원센터', phone: '010-5141-9049', email: 'lsh0613@hufs.ac.kr' },
+{ round: 4, date: '2026-10-22', day: '목', name: '유광옥', affiliation: '한국외대', dept: '교육지원팀', phone: '010-2354-3251', email: 'mylife5055@hufs.ac.kr' },
+{ round: 4, date: '2026-10-22', day: '목', name: '조수훈', affiliation: '한국외대', dept: '학생지원.장학팀', phone: '010-7210-7146', email: 'dreamersoo@hufs.ac.kr' },
+{ round: 4, date: '2026-10-22', day: '목', name: '고희경', affiliation: '산학협력단', dept: '기획총괄팀(글로벌)', phone: '010-6279-0610', email: 'hee0610@hufs.ac.kr' },
+{ round: 5, date: '2026-10-29', day: '목', name: '송드보람', affiliation: '한국외대', dept: '진로취업지원센터(서울)', phone: '010-7436-8864', email: 'deboram@hufs.ac.kr' },
+{ round: 5, date: '2026-10-29', day: '목', name: '조모란', affiliation: '한국외대', dept: '진로취업지원센터(글로벌)', phone: '010-8722-9671', email: 'jmr@hufs.ac.kr' },
+{ round: 5, date: '2026-10-29', day: '목', name: '한희태', affiliation: '한국외대', dept: '시설관리팀(글로벌)', phone: '010-4806-2374', email: 'ymbs007@hufs.ac.kr' },
+{ round: 5, date: '2026-10-29', day: '목', name: '이희승', affiliation: '한국외대', dept: '학사종합지원센터(글로벌)', phone: '010-2066-9751', email: '2hs@hufs.ac.kr' },
+{ round: 5, date: '2026-10-29', day: '목', name: '박민지', affiliation: '한국외대', dept: '총괄지원팀', phone: '010-9229-2324', email: 'minjipark85@hufs.ac.kr' },
+{ round: 5, date: '2026-10-29', day: '목', name: '이지은', affiliation: '한국외대', dept: '학생지원.장학팀', phone: '010-2055-2549', email: 'rosie@hufs.ac.kr' },
+{ round: 5, date: '2026-10-29', day: '목', name: '박희성', affiliation: '한국외대', dept: '총괄지원팀', phone: '010-3214-1022', email: 'new_walker@hanmail.net' },
+{ round: 6, date: '2026-11-05', day: '목', name: '김보람', affiliation: '산학협력단', dept: '연구지원2팀', phone: '010-5192-7252', email: 'boram723@hufs.ac.kr' },
+{ round: 6, date: '2026-11-05', day: '목', name: '정문규', affiliation: '한국외대', dept: '학사종합지원센터', phone: '010-2460-7787', email: 'cadepend@hufs.ac.kr' },
+{ round: 6, date: '2026-11-05', day: '목', name: '송재민', affiliation: '산학협력단', dept: '산학지원팀(글로벌)', phone: '010-6476-7130', email: 'sjm@hufs.ac.kr' },
+{ round: 6, date: '2026-11-05', day: '목', name: '임주리', affiliation: '산학협력단', dept: '연구지원2팀', phone: '010-9623-2838', email: 'juri1123@hufs.ac.kr' },
+{ round: 6, date: '2026-11-05', day: '목', name: '이혜승', affiliation: '산학협력단', dept: '연구지원2팀', phone: '010-6549-8101', email: 'seung417@hufs.ac.kr' },
+{ round: 6, date: '2026-11-05', day: '목', name: '김혜원', affiliation: '산학협력단', dept: '연구지원2팀', phone: '010-4131-6808', email: 'sarvenaz12@hufs.ac.kr' },
+{ round: 6, date: '2026-11-05', day: '목', name: '강용현', affiliation: '한국외대', dept: '시설관리팀', phone: '010-7303-5471', email: 'da512@hufs.ac.kr' },
+{ round: 6, date: '2026-11-05', day: '목', name: '김나래', affiliation: '산학협력단', dept: '연구지원1팀', phone: '010-9979-0528', email: 'narae528@hufs.ac.kr' }
+];
 
-    function closeAdminLogin() {
-      document.getElementById('admin-login-modal').classList.add('hidden');
-    }
+// 행사 시간 및 캠퍼스별 장소
+const MEAL_TIME = '12:00';
+const LOCATIONS = {
+'서울': '서울캠퍼스 본관 602호 노동조합 사무실',
+'글로벌': '글로벌캠퍼스 백년관 922호 노동조합 사무실'
+};
 
-    function handleAdminLogin(e) {
-      e.preventDefault();
-      const input = document.getElementById('admin-password-input');
-      if (input.value === ADMIN_PASSWORD) {
-        adminUnlocked = true;
-        closeAdminLogin();
-        switchView('admin');
-      } else {
-        document.getElementById('admin-login-error').classList.remove('hidden');
-        input.classList.add('border-rose-500');
-        input.value = '';
-        input.focus();
-      }
-    }
+let participants = [];
+let selectedParticipant = null;
+let currentAdminCampus = 'ALL';
 
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeAdminLogin();
-    });
+// Build Master Dataset with unique IDs
+function initData() {
+const seoul = rawSeoulData.map((item, idx) => ({
+id: `SEOUL_${idx}_${item.name}`,
+campus: '서울',
+...item
+}));
+const global = rawGlobalData.map((item, idx) => ({
+id: `GLOBAL_${idx}_${item.name}`,
+campus: '글로벌',
+...item
+}));
+const masterList = [...seoul, ...global];
 
-    function switchView(viewName) {
-      if (viewName === 'admin' && !adminUnlocked) {
-        openAdminLogin();
-        return;
-      }
-      const userView = document.getElementById('view-user');
-      const adminView = document.getElementById('view-admin');
-      const userBtn = document.getElementById('nav-user-btn');
-      const adminBtn = document.getElementById('nav-admin-btn');
+// 초기 상태는 '미응답'으로 세팅. 실제 응답은 Firestore에서 실시간으로 채워짐(applyRemoteRSVP).
+participants = masterList.map(p => ({
+...p,
+status: '미응답',
+memo: '',
+updatedAt: null
+}));
+}
 
-      if (viewName === 'user') {
-        userView.classList.remove('hidden');
-        adminView.classList.add('hidden');
-        userBtn.className = "px-3 py-1.5 rounded-lg text-sm font-medium transition bg-white/10 hover:bg-white/20 text-white flex items-center gap-1.5";
-        adminBtn.className = "px-3 py-1.5 rounded-lg text-sm font-medium transition bg-transparent hover:bg-white/10 text-blue-200 hover:text-white flex items-center gap-1.5";
-      } else {
-        userView.classList.add('hidden');
-        adminView.classList.remove('hidden');
-        adminBtn.className = "px-3 py-1.5 rounded-lg text-sm font-medium transition bg-white/10 hover:bg-white/20 text-white flex items-center gap-1.5";
-        userBtn.className = "px-3 py-1.5 rounded-lg text-sm font-medium transition bg-transparent hover:bg-white/10 text-blue-200 hover:text-white flex items-center gap-1.5";
-        updateAdminDashboard();
-      }
-    }
+// Firestore에서 실시간으로 내려오는 전체 응답 맵을 참가자 배열에 반영
+// (다른 사용자가 체크한 내용도 여기서 함께 반영되므로 관리자 화면에 바로 보임)
+window.applyRemoteRSVP = function(savedMap) {
+participants = participants.map(p => {
+const saved = savedMap[p.id];
+return {
+...p,
+status: saved ? saved.status : '미응답',
+memo: saved ? saved.memo : '',
+updatedAt: saved ? saved.updatedAt : null
+};
+});
 
-    function setupSearchEvents() {
-      const searchInput = document.getElementById('name-search-input');
-      const suggestionsBox = document.getElementById('suggestions-container');
-      const clearBtn = document.getElementById('clear-search-btn');
+// 관리자 화면이 열려 있으면 대시보드 갱신
+const adminView = document.getElementById('view-admin');
+if (adminView && !adminView.classList.contains('hidden')) {
+updateAdminDashboard();
+}
 
-      searchInput.addEventListener('input', (e) => {
-        const query = e.target.value.trim().toLowerCase();
-        
-        if (query.length > 0) {
-          clearBtn.classList.remove('hidden');
-        } else {
-          clearBtn.classList.add('hidden');
-          suggestionsBox.classList.add('hidden');
-          return;
-        }
+// 참석확인 화면에 선택된 사람이 있으면 최신 상태로 다시 반영 (본인이 아닌 다른 기기에서 자신의 응답을 바꾼 경우 등)
+if (selectedParticipant) {
+const refreshed = participants.find(p => p.id === selectedParticipant.id);
+if (refreshed) {
+selectedParticipant = refreshed;
+// 폼 값까지 덮어쓰면 입력 중인 내용이 날아갈 수 있으므로, 동반자 목록/상태 배지 정도만 갱신
+const badge = document.getElementById('rsvp-status-badge');
+if (badge && document.getElementById('rsvp-card') && !document.getElementById('rsvp-card').classList.contains('hidden')) {
+badge.innerText = refreshed.status;
+badge.className = `px-3 py-1 rounded-full text-xs font-bold ${getStatusBadgeClass(refreshed.status)}`;
+}
+}
+}
+};
 
-        // Filter participants by name or dept or phone
-        const matches = participants.filter(p => 
-          p.name.toLowerCase().includes(query) ||
-          p.dept.toLowerCase().includes(query) ||
-          p.phone.includes(query)
-        );
+document.addEventListener('DOMContentLoaded', () => {
+initData();
+setupSearchEvents();
+updateAdminDashboard();
+});
 
-        renderSuggestions(matches);
-      });
+// 관리자 페이지 비밀번호
+const ADMIN_PASSWORD = '2611';
+let adminUnlocked = false;
 
-      clearBtn.addEventListener('click', () => {
-        searchInput.value = '';
-        clearBtn.classList.add('hidden');
-        suggestionsBox.classList.add('hidden');
-        document.getElementById('rsvp-card').classList.add('hidden');
-        selectedParticipant = null;
-      });
-    }
+function openAdminLogin() {
+const modal = document.getElementById('admin-login-modal');
+const input = document.getElementById('admin-password-input');
+input.value = '';
+input.classList.remove('border-rose-500');
+document.getElementById('admin-login-error').classList.add('hidden');
+modal.classList.remove('hidden');
+setTimeout(() => input.focus(), 50);
+}
 
-    function renderSuggestions(list) {
-      const suggestionsBox = document.getElementById('suggestions-container');
-      
-      if (list.length === 0) {
-        suggestionsBox.innerHTML = `
-          <div class="p-4 text-center text-slate-500 text-sm">
-            검색 결과가 없습니다. 이름을 다시 확인해 주세요.
-          </div>`;
-        suggestionsBox.classList.remove('hidden');
-        return;
-      }
+function closeAdminLogin() {
+document.getElementById('admin-login-modal').classList.add('hidden');
+}
 
-      suggestionsBox.innerHTML = list.map(item => `
-        <div onclick="selectParticipant('${item.id}')" class="p-3.5 hover:bg-slate-50 cursor-pointer transition flex items-center justify-between">
-          <div>
-            <div class="flex items-center gap-2">
-              <span class="font-bold text-slate-800 text-sm">${item.name}</span>
-              <span class="text-xs px-2 py-0.5 rounded ${item.campus === '서울' ? 'bg-blue-50 text-blue-700' : 'bg-emerald-50 text-emerald-700'} font-semibold">${item.campus}</span>
-              <span class="text-xs text-slate-500">${item.round}회차 (${item.date})</span>
-            </div>
-            <div class="text-xs text-slate-500 mt-1">${item.dept}</div>
-          </div>
-          <div class="text-xs font-bold ${getStatusBadgeClass(item.status)}">
-            ${item.status}
-          </div>
-        </div>
-      `).join('');
+function handleAdminLogin(e) {
+e.preventDefault();
+const input = document.getElementById('admin-password-input');
+if (input.value === ADMIN_PASSWORD) {
+adminUnlocked = true;
+closeAdminLogin();
+switchView('admin');
+} else {
+document.getElementById('admin-login-error').classList.remove('hidden');
+input.classList.add('border-rose-500');
+input.value = '';
+input.focus();
+}
+}
 
-      suggestionsBox.classList.remove('hidden');
-    }
+document.addEventListener('keydown', (e) => {
+if (e.key === 'Escape') closeAdminLogin();
+});
 
-    function selectParticipant(id) {
-      selectedParticipant = participants.find(p => p.id === id);
-      if (!selectedParticipant) return;
+function switchView(viewName) {
+if (viewName === 'admin' && !adminUnlocked) {
+openAdminLogin();
+return;
+}
+const userView = document.getElementById('view-user');
+const adminView = document.getElementById('view-admin');
+const userBtn = document.getElementById('nav-user-btn');
+const adminBtn = document.getElementById('nav-admin-btn');
+if (viewName === 'user') {
+userView.classList.remove('hidden');
+adminView.classList.add('hidden');
+userBtn.className = "px-3 py-1.5 rounded-lg text-sm font-medium transition bg-white/10 hover:bg-white/20 text-white flex items-center gap-1.5";
+adminBtn.className = "px-3 py-1.5 rounded-lg text-sm font-medium transition bg-transparent hover:bg-white/10 text-blue-200 hover:text-white flex items-center gap-1.5";
+} else {
+userView.classList.add('hidden');
+adminView.classList.remove('hidden');
+adminBtn.className = "px-3 py-1.5 rounded-lg text-sm font-medium transition bg-white/10 hover:bg-white/20 text-white flex items-center gap-1.5";
+userBtn.className = "px-3 py-1.5 rounded-lg text-sm font-medium transition bg-transparent hover:bg-white/10 text-blue-200 hover:text-white flex items-center gap-1.5";
+updateAdminDashboard();
+}
+}
 
-      document.getElementById('suggestions-container').classList.add('hidden');
-      document.getElementById('name-search-input').value = `${selectedParticipant.name} (${selectedParticipant.dept})`;
+function setupSearchEvents() {
+const searchInput = document.getElementById('name-search-input');
+const suggestionsBox = document.getElementById('suggestions-container');
+const clearBtn = document.getElementById('clear-search-btn');
 
-      // Populate Card Details
-      document.getElementById('participant-name-title').innerText = `${selectedParticipant.name} 님`;
-      document.getElementById('campus-badge').innerText = `${selectedParticipant.campus}캠퍼스`;
-      document.getElementById('campus-badge').className = `px-2.5 py-1 text-xs font-bold rounded-full ${selectedParticipant.campus === '서울' ? 'bg-blue-100 text-blue-800' : 'bg-emerald-100 text-emerald-800'}`;
+searchInput.addEventListener('input', (e) => {
+const query = e.target.value.trim().toLowerCase();
+if (query.length > 0) {
+clearBtn.classList.remove('hidden');
+} else {
+clearBtn.classList.add('hidden');
+suggestionsBox.classList.add('hidden');
+return;
+}
+// Filter participants by name or dept or phone
+const matches = participants.filter(p =>
+p.name.toLowerCase().includes(query) ||
+p.dept.toLowerCase().includes(query) ||
+p.phone.includes(query)
+);
+renderSuggestions(matches);
+});
 
-      document.getElementById('info-round').innerText = `${selectedParticipant.round}회차`;
-      document.getElementById('info-date').innerText = `${selectedParticipant.date}(${selectedParticipant.day}) ${MEAL_TIME}`;
-      document.getElementById('info-dept').innerText = `${selectedParticipant.affiliation} / ${selectedParticipant.dept}`;
-      document.getElementById('info-location').innerText = LOCATIONS[selectedParticipant.campus] || '';
+clearBtn.addEventListener('click', () => {
+searchInput.value = '';
+clearBtn.classList.add('hidden');
+suggestionsBox.classList.add('hidden');
+document.getElementById('rsvp-card').classList.add('hidden');
+selectedParticipant = null;
+});
+}
 
-      // 함께 식사하는 분: 같은 캠퍼스 + 같은 회차 (본인 제외)
-      const companions = participants.filter(p =>
-        p.campus === selectedParticipant.campus &&
-        p.round === selectedParticipant.round &&
-        p.id !== selectedParticipant.id
-      );
-      document.getElementById('info-companions-count').innerText = `(${companions.length}명)`;
-      document.getElementById('info-companions').innerHTML = companions.length
-       ? companions.map(c => `
-         <div class="flex items-center gap-2 bg-white border border-slate-200 rounded-lg px-3 py-2">
-          <i class="fa-solid fa-user text-hufs-blue text-xs"></i>
-          <span class="font-semibold text-slate-800">${c.name}</span>
-          <span class="text-xs text-slate-500 truncate flex-1">${c.dept}</span>
-          <span class="shrink-0 px-2 py-0.5 rounded-full text-[11px] font-bold ${getStatusBadgeClass(c.status)}">${c.status}</span>
-      </div>`).join('')
-  : '<span class="text-slate-400">-</span>';
+function renderSuggestions(list) {
+const suggestionsBox = document.getElementById('suggestions-container');
+if (list.length === 0) {
+suggestionsBox.innerHTML = `
+<div class="p-4 text-center text-slate-500 text-sm">
+검색 결과가 없습니다. 이름을 다시 확인해 주세요.
+</div>`;
+suggestionsBox.classList.remove('hidden');
+return;
+}
+suggestionsBox.innerHTML = list.map(item => `
+<div onclick="selectParticipant('${item.id}')" class="p-3.5 hover:bg-slate-50 cursor-pointer transition flex items-center justify-between">
+<div>
+<div class="flex items-center gap-2">
+<span class="font-bold text-slate-800 text-sm">${item.name}</span>
+<span class="text-xs px-2 py-0.5 rounded ${item.campus === '서울' ? 'bg-blue-50 text-blue-700' : 'bg-emerald-50 text-emerald-700'} font-semibold">${item.campus}</span>
+<span class="text-xs text-slate-500">${item.round}회차 (${item.date})</span>
+</div>
+<div class="text-xs text-slate-500 mt-1">${item.dept} | ${item.phone}</div>
+</div>
+<div class="text-xs font-bold ${getStatusBadgeClass(item.status)}">
+${item.status}
+</div>
+</div>
+`).join('');
+suggestionsBox.classList.remove('hidden');
+}
 
-      // Status Badge
-      const badge = document.getElementById('rsvp-status-badge');
-      badge.innerText = selectedParticipant.status;
-      badge.className = `px-3 py-1 rounded-full text-xs font-bold ${getStatusBadgeClass(selectedParticipant.status)}`;
+function selectParticipant(id) {
+selectedParticipant = participants.find(p => p.id === id);
+if (!selectedParticipant) return;
 
-      // Radio & Memo form fields
-      const form = document.getElementById('rsvp-form');
-      form.reset();
+document.getElementById('suggestions-container').classList.add('hidden');
+document.getElementById('name-search-input').value = `${selectedParticipant.name} (${selectedParticipant.dept})`;
 
-      if (selectedParticipant.status === '참석' || selectedParticipant.status === '불참') {
-        const radio = form.querySelector(`input[name="attendance"][value="${selectedParticipant.status}"]`);
-        if (radio) radio.checked = true;
-      }
+// Populate Card Details
+document.getElementById('participant-name-title').innerText = `${selectedParticipant.name} 님`;
+document.getElementById('campus-badge').innerText = `${selectedParticipant.campus}캠퍼스`;
+document.getElementById('campus-badge').className = `px-2.5 py-1 text-xs font-bold rounded-full ${selectedParticipant.campus === '서울' ? 'bg-blue-100 text-blue-800' : 'bg-emerald-100 text-emerald-800'}`;
+document.getElementById('info-round').innerText = `${selectedParticipant.round}회차`;
+document.getElementById('info-date').innerText = `${selectedParticipant.date}(${selectedParticipant.day}) ${MEAL_TIME}`;
+document.getElementById('info-dept').innerText = `${selectedParticipant.affiliation} / ${selectedParticipant.dept}`;
+document.getElementById('info-location').innerText = LOCATIONS[selectedParticipant.campus] || '';
 
-      document.getElementById('rsvp-memo').value = selectedParticipant.memo || '';
-      document.getElementById('submit-btn-text').innerText = selectedParticipant.status === '미응답' ? 'RSVP 제출하기' : 'RSVP 수정하기';
+// 함께 식사하는 분: 같은 캠퍼스 + 같은 회차 (본인 제외)
+const companions = participants.filter(p =>
+p.campus === selectedParticipant.campus &&
+p.round === selectedParticipant.round &&
+p.id !== selectedParticipant.id
+);
+document.getElementById('info-companions-count').innerText = `(${companions.length}명)`;
+document.getElementById('info-companions').innerHTML = companions.length
+? companions.map(c => `
+<div class="flex items-center gap-2 bg-white border border-slate-200 rounded-lg px-3 py-2">
+<i class="fa-solid fa-user text-hufs-blue text-xs"></i>
+<span class="font-semibold text-slate-800">${c.name}</span>
+<span class="text-xs text-slate-500 truncate">${c.dept}</span>
+</div>`).join('')
+: '<span class="text-slate-400">-</span>';
 
-      document.getElementById('rsvp-card').classList.remove('hidden');
-    }
+// Status Badge
+const badge = document.getElementById('rsvp-status-badge');
+badge.innerText = selectedParticipant.status;
+badge.className = `px-3 py-1 rounded-full text-xs font-bold ${getStatusBadgeClass(selectedParticipant.status)}`;
 
-    function handleRsvpSubmit(e) {
-      e.preventDefault();
-      if (!selectedParticipant) return;
+// Radio & Memo form fields
+const form = document.getElementById('rsvp-form');
+form.reset();
+if (selectedParticipant.status === '참석' || selectedParticipant.status === '불참') {
+const radio = form.querySelector(`input[name="attendance"][value="${selectedParticipant.status}"]`);
+if (radio) radio.checked = true;
+}
+document.getElementById('rsvp-memo').value = selectedParticipant.memo || '';
+document.getElementById('submit-btn-text').innerText = selectedParticipant.status === '미응답' ? 'RSVP 제출하기' : 'RSVP 수정하기';
 
-      const form = e.target;
-      const attendance = form.attendance.value;
-      const memo = document.getElementById('rsvp-memo').value.trim();
+document.getElementById('rsvp-card').classList.remove('hidden');
+}
 
-      // Update Local Object
-      selectedParticipant.status = attendance;
-      selectedParticipant.memo = memo;
-      selectedParticipant.updatedAt = new Date().toISOString();
+async function handleRsvpSubmit(e) {
+e.preventDefault();
+if (!selectedParticipant) return;
 
-      // Save to LocalStorage
-      const saved = JSON.parse(localStorage.getItem('hufs_union_rsvp') || '{}');
-      saved[selectedParticipant.id] = {
-        status: attendance,
-        memo: memo,
-        updatedAt: selectedParticipant.updatedAt
-      };
-      localStorage.setItem('hufs_union_rsvp', JSON.stringify(saved));
+const form = e.target;
+const attendance = form.attendance.value;
+const memo = document.getElementById('rsvp-memo').value.trim();
+const updatedAt = new Date().toISOString();
 
-      // Refresh UI Card
-      selectParticipant(selectedParticipant.id);
-      showToast(`참석 여부가 '${attendance}'(으)로 등록되었습니다! 참석 여부는 언제든 수정 가능합니다`);
-    }
+// Update Local Object (즉각적인 UI 반응을 위해 먼저 반영)
+selectedParticipant.status = attendance;
+selectedParticipant.memo = memo;
+selectedParticipant.updatedAt = updatedAt;
 
-    function getStatusBadgeClass(status) {
-      switch (status) {
-        case '참석': return 'bg-emerald-100 text-emerald-800 border border-emerald-300';
-        case '불참': return 'bg-rose-100 text-rose-800 border border-rose-300';
-        default: return 'bg-slate-200 text-slate-600 border border-slate-300';
-      }
-    }
+const payload = { status: attendance, memo: memo, updatedAt: updatedAt };
 
-    function filterCampus(campus) {
-      currentAdminCampus = campus;
-      
-      const btnAll = document.getElementById('tab-all');
-      const btnSeoul = document.getElementById('tab-seoul');
-      const btnGlobal = document.getElementById('tab-global');
+try {
+if (window.__fb) {
+// Firestore(공유 저장소)에 저장 -> 모든 사용자/관리자 화면에 실시간 반영됨
+const { db, doc, setDoc, rsvpCollection } = window.__fb;
+await setDoc(doc(rsvpCollection, selectedParticipant.id), payload);
+} else {
+// Firebase 설정 전이라면 임시로 localStorage에만 저장 (이 기기에서만 보임)
+const saved = JSON.parse(localStorage.getItem('hufs_union_rsvp') || '{}');
+saved[selectedParticipant.id] = payload;
+localStorage.setItem('hufs_union_rsvp', JSON.stringify(saved));
+}
+} catch (err) {
+console.error('RSVP 저장 실패:', err);
+showToast('저장 중 오류가 발생했습니다. 다시 시도해 주세요.');
+return;
+}
 
-      const activeClass = "px-4 py-2 rounded-xl text-sm font-bold transition bg-hufs-navy text-white";
-      const inactiveClass = "px-4 py-2 rounded-xl text-sm font-bold transition bg-slate-100 text-slate-600 hover:bg-slate-200";
+// Refresh UI Card
+selectParticipant(selectedParticipant.id);
+showToast(`참석 여부가 '${attendance}'(으)로 등록되었습니다!`);
+}
 
-      btnAll.className = campus === 'ALL' ? activeClass : inactiveClass;
-      btnSeoul.className = campus === '서울' ? activeClass : inactiveClass;
-      btnGlobal.className = campus === '글로벌' ? activeClass : inactiveClass;
+function getStatusBadgeClass(status) {
+switch (status) {
+case '참석': return 'bg-emerald-100 text-emerald-800 border border-emerald-300';
+case '불참': return 'bg-rose-100 text-rose-800 border border-rose-300';
+default: return 'bg-slate-200 text-slate-600 border border-slate-300';
+}
+}
 
-      updateAdminDashboard();
-    }
+function filterCampus(campus) {
+currentAdminCampus = campus;
+const btnAll = document.getElementById('tab-all');
+const btnSeoul = document.getElementById('tab-seoul');
+const btnGlobal = document.getElementById('tab-global');
+const activeClass = "px-4 py-2 rounded-xl text-sm font-bold transition bg-hufs-navy text-white";
+const inactiveClass = "px-4 py-2 rounded-xl text-sm font-bold transition bg-slate-100 text-slate-600 hover:bg-slate-200";
+btnAll.className = campus === 'ALL' ? activeClass : inactiveClass;
+btnSeoul.className = campus === '서울' ? activeClass : inactiveClass;
+btnGlobal.className = campus === '글로벌' ? activeClass : inactiveClass;
+updateAdminDashboard();
+}
 
-    function applyAdminFilters() {
-      updateAdminDashboard();
-    }
+function applyAdminFilters() {
+updateAdminDashboard();
+}
 
-    function updateAdminDashboard() {
-      // 1. Filter by Campus
-      let filtered = participants;
-      if (currentAdminCampus !== 'ALL') {
-        filtered = filtered.filter(p => p.campus === currentAdminCampus);
-      }
+function updateAdminDashboard() {
+// 1. Filter by Campus
+let filtered = participants;
+if (currentAdminCampus !== 'ALL') {
+filtered = filtered.filter(p => p.campus === currentAdminCampus);
+}
 
-      // Calculate Metrics
-      const total = filtered.length;
-      const attending = filtered.filter(p => p.status === '참석').length;
-      const absent = filtered.filter(p => p.status === '불참').length;
-      const pending = filtered.filter(p => p.status === '미응답').length;
+// Calculate Metrics
+const total = filtered.length;
+const attending = filtered.filter(p => p.status === '참석').length;
+const absent = filtered.filter(p => p.status === '불참').length;
+const pending = filtered.filter(p => p.status === '미응답').length;
 
-      document.getElementById('stat-total').innerText = `${total}명`;
-      document.getElementById('stat-attending').innerText = `${attending}명`;
-      document.getElementById('stat-attending-pct').innerText = total ? `${Math.round((attending / total) * 100)}%` : '0%';
-      document.getElementById('stat-absent').innerText = `${absent}명`;
-      document.getElementById('stat-absent-pct').innerText = total ? `${Math.round((absent / total) * 100)}%` : '0%';
-      document.getElementById('stat-pending').innerText = `${pending}명`;
-      document.getElementById('stat-pending-pct').innerText = total ? `${Math.round((pending / total) * 100)}%` : '0%';
+document.getElementById('stat-total').innerText = `${total}명`;
+document.getElementById('stat-attending').innerText = `${attending}명`;
+document.getElementById('stat-attending-pct').innerText = total ? `${Math.round((attending / total) * 100)}%` : '0%';
+document.getElementById('stat-absent').innerText = `${absent}명`;
+document.getElementById('stat-absent-pct').innerText = total ? `${Math.round((absent / total) * 100)}%` : '0%';
+document.getElementById('stat-pending').innerText = `${pending}명`;
+document.getElementById('stat-pending-pct').innerText = total ? `${Math.round((pending / total) * 100)}%` : '0%';
 
-      // 2. Round Summaries
-      renderRoundSummaries(filtered);
+// 2. Round Summaries
+renderRoundSummaries(filtered);
 
-      // 3. Table Filtering
-      const statusFilter = document.getElementById('admin-status-filter').value;
-      const searchQuery = document.getElementById('admin-search-input').value.trim().toLowerCase();
+// 3. Table Filtering
+const statusFilter = document.getElementById('admin-status-filter').value;
+const searchQuery = document.getElementById('admin-search-input').value.trim().toLowerCase();
 
-      let tableData = filtered;
-      if (statusFilter !== 'ALL') {
-        tableData = tableData.filter(p => p.status === statusFilter);
-      }
-      if (searchQuery) {
-        tableData = tableData.filter(p => 
-          p.name.toLowerCase().includes(searchQuery) ||
-          p.dept.toLowerCase().includes(searchQuery) ||
-          p.phone.includes(searchQuery)
-        );
-      }
+let tableData = filtered;
+if (statusFilter !== 'ALL') {
+tableData = tableData.filter(p => p.status === statusFilter);
+}
+if (searchQuery) {
+tableData = tableData.filter(p =>
+p.name.toLowerCase().includes(searchQuery) ||
+p.dept.toLowerCase().includes(searchQuery) ||
+p.phone.includes(searchQuery)
+);
+}
 
-      renderAdminTable(tableData);
-    }
+renderAdminTable(tableData);
+}
 
-    function renderRoundSummaries(filteredList) {
-      const container = document.getElementById('round-summary-container');
-      
-      // Group by Round & Campus
-      const roundsMap = {};
-      filteredList.forEach(p => {
-        const key = `${p.campus}_${p.round}_${p.date}`;
-        if (!roundsMap[key]) {
-          roundsMap[key] = {
-            campus: p.campus,
-            round: p.round,
-            date: p.date,
-            day: p.day,
-            total: 0,
-            attending: 0,
-            absent: 0,
-            pending: 0
-          };
-        }
-        roundsMap[key].total += 1;
-        if (p.status === '참석') roundsMap[key].attending += 1;
-        else if (p.status === '불참') roundsMap[key].absent += 1;
-        else roundsMap[key].pending += 1;
-      });
+function renderRoundSummaries(filteredList) {
+const container = document.getElementById('round-summary-container');
+// Group by Round & Campus
+const roundsMap = {};
+filteredList.forEach(p => {
+const key = `${p.campus}_${p.round}_${p.date}`;
+if (!roundsMap[key]) {
+roundsMap[key] = {
+campus: p.campus,
+round: p.round,
+date: p.date,
+day: p.day,
+total: 0,
+attending: 0,
+absent: 0,
+pending: 0
+};
+}
+roundsMap[key].total += 1;
+if (p.status === '참석') roundsMap[key].attending += 1;
+else if (p.status === '불참') roundsMap[key].absent += 1;
+else roundsMap[key].pending += 1;
+});
 
-      const roundsArray = Object.values(roundsMap);
+const roundsArray = Object.values(roundsMap);
+container.innerHTML = roundsArray.map(r => `
+<div class="bg-slate-50 border border-slate-200 rounded-xl p-3.5 text-xs space-y-2">
+<div class="flex justify-between items-center font-bold text-slate-800 border-b border-slate-200 pb-1.5">
+<span>[${r.campus}] ${r.round}회차 (${r.date} ${r.day})</span>
+<span class="text-slate-500 font-normal">총 ${r.total}명</span>
+</div>
+<div class="grid grid-cols-3 gap-1 text-center font-semibold">
+<div class="bg-emerald-100/70 text-emerald-800 rounded py-1">참석: ${r.attending}</div>
+<div class="bg-rose-100/70 text-rose-800 rounded py-1">불참: ${r.absent}</div>
+<div class="bg-slate-200 text-slate-700 rounded py-1">미응답: ${r.pending}</div>
+</div>
+</div>
+`).join('');
+}
 
-      container.innerHTML = roundsArray.map(r => `
-        <div class="bg-slate-50 border border-slate-200 rounded-xl p-3.5 text-xs space-y-2">
-          <div class="flex justify-between items-center font-bold text-slate-800 border-b border-slate-200 pb-1.5">
-            <span>[${r.campus}] ${r.round}회차 (${r.date} ${r.day})</span>
-            <span class="text-slate-500 font-normal">총 ${r.total}명</span>
-          </div>
-          <div class="grid grid-cols-3 gap-1 text-center font-semibold">
-            <div class="bg-emerald-100/70 text-emerald-800 rounded py-1">참석: ${r.attending}</div>
-            <div class="bg-rose-100/70 text-rose-800 rounded py-1">불참: ${r.absent}</div>
-            <div class="bg-slate-200 text-slate-700 rounded py-1">미응답: ${r.pending}</div>
-          </div>
-        </div>
-      `).join('');
-    }
+function renderAdminTable(list) {
+document.getElementById('admin-table-count').innerText = list.length;
+const tbody = document.getElementById('admin-table-body');
+if (list.length === 0) {
+tbody.innerHTML = `<tr><td colspan="9" class="p-8 text-center text-slate-400">조회된 명단이 없습니다.</td></tr>`;
+return;
+}
+tbody.innerHTML = list.map(item => `
+<tr class="hover:bg-slate-50 transition text-xs md:text-sm">
+<td class="p-3"><span class="px-2 py-0.5 rounded ${item.campus==='서울'?'bg-blue-100 text-blue-800':'bg-emerald-100 text-emerald-800'} font-bold">${item.campus}</span></td>
+<td class="p-3 font-semibold">${item.round}회차</td>
+<td class="p-3 text-slate-600">${item.date} (${item.day})</td>
+<td class="p-3 font-bold text-slate-800">${item.name}</td>
+<td class="p-3 text-slate-600">${item.affiliation} / ${item.dept}</td>
+<td class="p-3 text-slate-600">${item.phone}</td>
+<td class="p-3">
+<span class="px-2.5 py-1 rounded-full text-xs font-bold ${getStatusBadgeClass(item.status)}">
+${item.status}
+</span>
+</td>
+<td class="p-3 text-slate-500 max-w-xs truncate" title="${item.memo || ''}">${item.memo || '-'}</td>
+<td class="p-3 text-center">
+${item.status === '미응답' && !item.memo
+? '<span class="text-slate-300">-</span>'
+: `<button onclick="resetIndividual('${item.id}')" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-rose-100 text-slate-600 hover:text-rose-700 text-xs font-semibold transition whitespace-nowrap" title="${item.name} 님의 응답 초기화">
+<i class="fa-solid fa-rotate-left mr-1"></i>초기화
+</button>`}
+</td>
+</tr>
+`).join('');
+}
 
-    function renderAdminTable(list) {
-      document.getElementById('admin-table-count').innerText = list.length;
-      const tbody = document.getElementById('admin-table-body');
+function exportToCSV() {
+const headers = ['캠퍼스', '회차', '날짜', '요일', '이름', '소속', '근무부서', '휴대폰', '직장메일', '참석여부', '메모'];
+const rows = participants.map(p => [
+p.campus,
+p.round,
+p.date,
+p.day,
+p.name,
+p.affiliation,
+p.dept,
+p.phone,
+p.email,
+p.status,
+`"${(p.memo || '').replace(/"/g, '""')}"`
+]);
+const csvContent = "\uFEFF" + [headers.join(','), ...rows.map(e => e.join(','))].join('\n');
+const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+const url = URL.createObjectURL(blob);
+const link = document.createElement('a');
+const today = new Date().toISOString().slice(0, 10);
+link.setAttribute('href', url);
+link.setAttribute('download', `노동조합_점심식사_RSVP_명단_${today}.csv`);
+document.body.appendChild(link);
+link.click();
+document.body.removeChild(link);
+showToast('CSV 다운로드가 완료되었습니다.');
+}
 
-      if (list.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="9" class="p-8 text-center text-slate-400">조회된 명단이 없습니다.</td></tr>`;
-        return;
-      }
+async function resetIndividual(id) {
+const target = participants.find(p => p.id === id);
+if (!target) return;
+if (!confirm(`${target.name} 님(${target.campus}캠퍼스 ${target.round}회차)의 응답을 초기화하시겠습니까?\n참석 여부와 메모가 삭제되고 '미응답' 상태가 됩니다.`)) return;
 
-      tbody.innerHTML = list.map(item => `
-        <tr class="hover:bg-slate-50 transition text-xs md:text-sm">
-          <td class="p-3"><span class="px-2 py-0.5 rounded ${item.campus==='서울'?'bg-blue-100 text-blue-800':'bg-emerald-100 text-emerald-800'} font-bold">${item.campus}</span></td>
-          <td class="p-3 font-semibold">${item.round}회차</td>
-          <td class="p-3 text-slate-600">${item.date} (${item.day})</td>
-          <td class="p-3 font-bold text-slate-800">${item.name}</td>
-          <td class="p-3 text-slate-600">${item.affiliation} / ${item.dept}</td>
-          <td class="p-3 text-slate-600">${item.phone}</td>
-          <td class="p-3">
-            <span class="px-2.5 py-1 rounded-full text-xs font-bold ${getStatusBadgeClass(item.status)}">
-              ${item.status}
-            </span>
-          </td>
-          <td class="p-3 text-slate-500 max-w-xs truncate" title="${item.memo || ''}">${item.memo || '-'}</td>
-          <td class="p-3 text-center">
-            ${item.status === '미응답' && !item.memo
-              ? '<span class="text-slate-300">-</span>'
-              : `<button onclick="resetIndividual('${item.id}')" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-rose-100 text-slate-600 hover:text-rose-700 text-xs font-semibold transition whitespace-nowrap" title="${item.name} 님의 응답 초기화">
-                  <i class="fa-solid fa-rotate-left mr-1"></i>초기화
-                </button>`}
-          </td>
-        </tr>
-      `).join('');
-    }
+try {
+if (window.__fb) {
+const { doc, deleteDoc, rsvpCollection } = window.__fb;
+await deleteDoc(doc(rsvpCollection, id));
+} else {
+const saved = JSON.parse(localStorage.getItem('hufs_union_rsvp') || '{}');
+delete saved[id];
+localStorage.setItem('hufs_union_rsvp', JSON.stringify(saved));
+}
+} catch (err) {
+console.error('초기화 실패:', err);
+showToast('초기화 중 오류가 발생했습니다.');
+return;
+}
 
-    function exportToCSV() {
-      const headers = ['캠퍼스', '회차', '날짜', '요일', '이름', '소속', '근무부서', '휴대폰', '직장메일', '참석여부', '메모'];
-      
-      const rows = participants.map(p => [
-        p.campus,
-        p.round,
-        p.date,
-        p.day,
-        p.name,
-        p.affiliation,
-        p.dept,
-        p.phone,
-        p.email,
-        p.status,
-        `"${(p.memo || '').replace(/"/g, '""')}"`
-      ]);
+// 화면 데이터 갱신
+target.status = '미응답';
+target.memo = '';
+target.updatedAt = null;
 
-      const csvContent = "\uFEFF" + [headers.join(','), ...rows.map(e => e.join(','))].join('\n');
-      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      
-      const today = new Date().toISOString().slice(0, 10);
-      link.setAttribute('href', url);
-      link.setAttribute('download', `노동조합_점심식사_RSVP_명단_${today}.csv`);
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      showToast('CSV 다운로드가 완료되었습니다.');
-    }
+// 참석 확인 화면에 같은 사람이 열려 있으면 함께 갱신
+if (selectedParticipant && selectedParticipant.id === id) {
+selectParticipant(id);
+}
 
-    function resetIndividual(id) {
-      const target = participants.find(p => p.id === id);
-      if (!target) return;
+updateAdminDashboard();
+showToast(`${target.name} 님의 응답이 초기화되었습니다.`);
+}
 
-      if (!confirm(`${target.name} 님(${target.campus}캠퍼스 ${target.round}회차)의 응답을 초기화하시겠습니까?\n참석 여부와 메모가 삭제되고 '미응답' 상태가 됩니다.`)) return;
+async function resetDataPrompt() {
+if (!confirm('저장된 모든 RSVP 응답 데이터를 초기화하시겠습니까? (공유 저장소에서 삭제되며 모든 사용자에게 반영됩니다)')) return;
 
-      // 저장소에서 해당 응답만 삭제
-      const saved = JSON.parse(localStorage.getItem('hufs_union_rsvp') || '{}');
-      delete saved[id];
-      localStorage.setItem('hufs_union_rsvp', JSON.stringify(saved));
+try {
+if (window.__fb) {
+const { db, doc, deleteDoc, rsvpCollection } = window.__fb;
+const deletions = participants
+.filter(p => p.status !== '미응답' || p.memo)
+.map(p => deleteDoc(doc(rsvpCollection, p.id)));
+await Promise.all(deletions);
+} else {
+localStorage.removeItem('hufs_union_rsvp');
+}
+} catch (err) {
+console.error('전체 초기화 실패:', err);
+showToast('초기화 중 오류가 발생했습니다.');
+return;
+}
 
-      // 화면 데이터 갱신
-      target.status = '미응답';
-      target.memo = '';
-      target.updatedAt = null;
+initData();
+updateAdminDashboard();
+showToast('모든 응답 데이터가 초기화되었습니다.');
+}
 
-      // 참석 확인 화면에 같은 사람이 열려 있으면 함께 갱신
-      if (selectedParticipant && selectedParticipant.id === id) {
-        selectParticipant(id);
-      }
-
-      updateAdminDashboard();
-      showToast(`${target.name} 님의 응답이 초기화되었습니다.`);
-    }
-
-    function resetDataPrompt() {
-      if (confirm('저장된 모든 RSVP 응답 데이터를 초기화하시겠습니까? (로컬스토리지 삭제)')) {
-        localStorage.removeItem('hufs_union_rsvp');
-        initData();
-        updateAdminDashboard();
-        showToast('모든 응답 데이터가 초기화되었습니다.');
-      }
-    }
-
-    function showToast(msg) {
-      const toast = document.getElementById('toast');
-      const toastMsg = document.getElementById('toast-msg');
-      toastMsg.innerText = msg;
-      
-      toast.classList.remove('translate-y-20', 'opacity-0');
-      setTimeout(() => {
-        toast.classList.add('translate-y-20', 'opacity-0');
-      }, 3000);
-    }
-  </script>
+function showToast(msg) {
+const toast = document.getElementById('toast');
+const toastMsg = document.getElementById('toast-msg');
+toastMsg.innerText = msg;
+toast.classList.remove('translate-y-20', 'opacity-0');
+setTimeout(() => {
+toast.classList.add('translate-y-20', 'opacity-0');
+}, 3000);
+}
+</script>
 </body>
 </html>
