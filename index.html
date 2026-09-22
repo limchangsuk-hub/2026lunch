@@ -675,13 +675,14 @@
       );
       document.getElementById('info-companions-count').innerText = `(${companions.length}명)`;
       document.getElementById('info-companions').innerHTML = companions.length
-        ? companions.map(c => `
-            <div class="flex items-center gap-2 bg-white border border-slate-200 rounded-lg px-3 py-2">
-              <i class="fa-solid fa-user text-hufs-blue text-xs"></i>
-              <span class="font-semibold text-slate-800">${c.name}</span>
-              <span class="text-xs text-slate-500 truncate">${c.dept}</span>
-            </div>`).join('')
-        : '<span class="text-slate-400">-</span>';
+       ? companions.map(c => `
+         <div class="flex items-center gap-2 bg-white border border-slate-200 rounded-lg px-3 py-2">
+          <i class="fa-solid fa-user text-hufs-blue text-xs"></i>
+          <span class="font-semibold text-slate-800">${c.name}</span>
+          <span class="text-xs text-slate-500 truncate flex-1">${c.dept}</span>
+          <span class="shrink-0 px-2 py-0.5 rounded-full text-[11px] font-bold ${getStatusBadgeClass(c.status)}">${c.status}</span>
+      </div>`).join('')
+  : '<span class="text-slate-400">-</span>';
 
       // Status Badge
       const badge = document.getElementById('rsvp-status-badge');
