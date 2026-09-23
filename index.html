@@ -925,8 +925,8 @@ tbody.innerHTML = list.map(item => `
 <td class="p-3 font-bold text-slate-800">${item.name}</td>
 <td class="p-3 text-slate-600">${item.affiliation} / ${item.dept}</td>
 <td class="p-3 text-slate-600">${item.phone}</td>
-<td class="p-3">
-<span class="px-2.5 py-1 rounded-full text-xs font-bold ${getStatusBadgeClass(item.status)}">
+<td class="p-3 whitespace-nowrap">
+<span class="px-2.5 py-1 rounded-full text-xs font-bold whitespace-nowrap ${getStatusBadgeClass(item.status)}">
 ${item.status}
 </span>
 </td>
