@@ -919,12 +919,12 @@ return;
 }
 tbody.innerHTML = list.map(item => `
 <tr class="hover:bg-slate-50 transition text-xs md:text-sm">
-<td class="p-3"><span class="px-2 py-0.5 rounded ${item.campus==='서울'?'bg-blue-100 text-blue-800':'bg-emerald-100 text-emerald-800'} font-bold">${item.campus}</span></td>
-<td class="p-3 font-semibold">${item.round}회차</td>
-<td class="p-3 text-slate-600">${item.date} (${item.day})</td>
-<td class="p-3 font-bold text-slate-800">${item.name}</td>
+<td class="p-3 whitespace-nowrap"><span class="px-2 py-0.5 rounded ${item.campus==='서울'?'bg-blue-100 text-blue-800':'bg-emerald-100 text-emerald-800'} font-bold">${item.campus}</span></td>
+<td class="p-3 font-semibold whitespace-nowrap">${item.round}회차</td>
+<td class="p-3 text-slate-600 whitespace-nowrap">${item.date} (${item.day})</td>
+<td class="p-3 font-bold text-slate-800 whitespace-nowrap">${item.name}</td>
 <td class="p-3 text-slate-600">${item.affiliation} / ${item.dept}</td>
-<td class="p-3 text-slate-600">${item.phone}</td>
+<td class="p-3 text-slate-600 whitespace-nowrap">${item.phone}</td>
 <td class="p-3 whitespace-nowrap">
 <span class="px-2.5 py-1 rounded-full text-xs font-bold whitespace-nowrap ${getStatusBadgeClass(item.status)}">
 ${item.status}
