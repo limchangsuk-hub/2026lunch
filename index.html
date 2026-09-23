@@ -912,13 +912,28 @@ container.innerHTML = roundsArray.map(r => `
 
 function renderAdminTable(list) {
 document.getElementById('admin-table-count').innerText = list.length;
+
 const tbody = document.getElementById('admin-table-body');
+
 if (list.length === 0) {
 tbody.innerHTML = `<tr><td colspan="9" class="p-8 text-center text-slate-400">조회된 명단이 없습니다.</td></tr>`;
 return;
 }
-tbody.innerHTML = list.map(item => `
-<tr class="hover:bg-slate-50 transition text-xs md:text-sm">
+
+let lastGroupKey = null;
+let stripe = 0;
+
+tbody.innerHTML = list.map(item => {
+const groupKey = `${item.campus}_${item.round}_${item.date}`;
+if (groupKey !== lastGroupKey) {
+  stripe = stripe === 0 ? 1 : 0;
+  lastGroupKey = groupKey;
+}
+const rowBg = stripe === 0 ? 'bg-white' : 'bg-hufs-lightBlue/50';
+
+return `
+
+<tr class="${rowBg} hover:bg-slate-100 transition text-xs md:text-sm">
 <td class="p-3 whitespace-nowrap"><span class="px-2 py-0.5 rounded ${item.campus==='서울'?'bg-blue-100 text-blue-800':'bg-emerald-100 text-emerald-800'} font-bold">${item.campus}</span></td>
 <td class="p-3 font-semibold whitespace-nowrap">${item.round}회차</td>
 <td class="p-3 text-slate-600 whitespace-nowrap">${item.date} (${item.day})</td>
@@ -938,7 +953,8 @@ ${item.status === '미응답' && !item.memo
 </button>`}
 </td>
 </tr>
-`).join('');
+`;
+}).join('');
 }
 
 function exportToCSV() {
