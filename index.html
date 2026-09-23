@@ -930,8 +930,7 @@ tbody.innerHTML = list.map(item => `
 ${item.status}
 </span>
 </td>
-<td class="p-3 text-slate-500 max-w-xs truncate" title="${item.memo || ''}">${item.memo || '-'}</td>
-<td class="p-3 text-center">
+<td class="p-3 text-slate-500 max-w-[160px] truncate" title="${item.memo || ''}">${item.memo || '-'}</td><td class="p-3 text-center">
 ${item.status === '미응답' && !item.memo
 ? '<span class="text-slate-300">-</span>'
 : `<button onclick="resetIndividual('${item.id}')" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-rose-100 text-slate-600 hover:text-rose-700 text-xs font-semibold transition whitespace-nowrap" title="${item.name} 님의 응답 초기화">
