@@ -989,6 +989,26 @@ document.body.removeChild(link);
 showToast('CSV 다운로드가 완료되었습니다.');
 }
 
+function adminSetStatus(id, status) {
+const target = participants.find(p => p.id === id);
+if (!target || target.status === status) return;
+
+target.status = status;
+target.updatedAt = new Date().toISOString();
+
+// 저장소에 반영 (기존 메모는 유지)
+const saved = JSON.parse(localStorage.getItem('hufs_union_rsvp') || '{}');
+saved[id] = { status: status, memo: target.memo || '', updatedAt: target.updatedAt };
+localStorage.setItem('hufs_union_rsvp', JSON.stringify(saved));
+
+// 참석 확인 화면에 같은 사람이 열려 있으면 함께 갱신
+if (selectedParticipant && selectedParticipant.id === id) {
+selectParticipant(id);
+}
+
+updateAdminDashboard();
+showToast(`${target.name} 님을 '${status}'(으)로 변경했습니다.`);
+}
 async function resetIndividual(id) {
 const target = participants.find(p => p.id === id);
 if (!target) return;
