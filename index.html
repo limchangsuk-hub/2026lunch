@@ -941,9 +941,13 @@ return `
 <td class="p-3 text-slate-600">${item.affiliation} / ${item.dept}</td>
 <td class="p-3 text-slate-600 whitespace-nowrap">${item.phone}</td>
 <td class="p-3 whitespace-nowrap">
-<span class="px-2.5 py-1 rounded-full text-xs font-bold whitespace-nowrap ${getStatusBadgeClass(item.status)}">
-${item.status}
-</span>
+<div class="inline-flex rounded-lg overflow-hidden border border-slate-300 text-xs font-bold">
+<button onclick="adminSetStatus('${item.id}','참석')"
+class="px-3 py-1.5 transition ${item.status === '참석' ? 'bg-emerald-600 text-white' : 'bg-white text-slate-500 hover:bg-emerald-50'}">참석</button>
+<button onclick="adminSetStatus('${item.id}','불참')"
+class="px-3 py-1.5 border-l border-slate-300 transition ${item.status === '불참' ? 'bg-rose-600 text-white' : 'bg-white text-slate-500 hover:bg-rose-50'}">불참</button>
+</div>
+${item.status === '미응답' ? '<span class="ml-2 text-xs text-slate-400">미응답</span>' : ''}
 </td>
 <td class="p-3 text-slate-500 max-w-[160px] truncate" title="${item.memo || ''}">${item.memo || '-'}</td><td class="p-3 text-center">
 ${item.status === '미응답' && !item.memo
