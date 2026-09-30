@@ -989,60 +989,76 @@ document.body.removeChild(link);
 showToast('CSV 다운로드가 완료되었습니다.');
 }
 
-function adminSetStatus(id, status) {
-const target = participants.find(p => p.id === id);
-if (!target || target.status === status) return;
+async function adminSetStatus(id, status) {
+  const target = participants.find(p => p.id === id);
+  if (!target || target.status === status) return;
 
-target.status = status;
-target.updatedAt = new Date().toISOString();
+  const updatedAt = new Date().toISOString();
+  const payload = { status: status, memo: target.memo || '', updatedAt: updatedAt };
 
-// 저장소에 반영 (기존 메모는 유지)
-const saved = JSON.parse(localStorage.getItem('hufs_union_rsvp') || '{}');
-saved[id] = { status: status, memo: target.memo || '', updatedAt: target.updatedAt };
-localStorage.setItem('hufs_union_rsvp', JSON.stringify(saved));
+  try {
+    if (window.__fb) {
+      // Firestore(공유 저장소)에 저장 -> 모든 화면에 실시간 반영
+      const { doc, setDoc, rsvpCollection } = window.__fb;
+      await setDoc(doc(rsvpCollection, id), payload);
+    } else {
+      const saved = JSON.parse(localStorage.getItem('hufs_union_rsvp') || '{}');
+      saved[id] = payload;
+      localStorage.setItem('hufs_union_rsvp', JSON.stringify(saved));
+    }
+  } catch (err) {
+    console.error('관리자 상태 변경 실패:', err);
+    showToast('저장 중 오류가 발생했습니다. 다시 시도해 주세요.');
+    return;
+  }
 
-// 참석 확인 화면에 같은 사람이 열려 있으면 함께 갱신
-if (selectedParticipant && selectedParticipant.id === id) {
-selectParticipant(id);
+  // 저장 성공 후 로컬 상태 반영
+  target.status = status;
+  target.updatedAt = updatedAt;
+
+  // 참석 확인 화면에 같은 사람이 열려 있으면 함께 갱신
+  if (selectedParticipant && selectedParticipant.id === id) {
+    selectParticipant(id);
+  }
+
+  updateAdminDashboard();
+  showToast(`${target.name} 님을 '${status}'(으)로 변경했습니다.`);
 }
 
-updateAdminDashboard();
-showToast(`${target.name} 님을 '${status}'(으)로 변경했습니다.`);
-}
 async function resetIndividual(id) {
-const target = participants.find(p => p.id === id);
-if (!target) return;
-if (!confirm(`${target.name} 님(${target.campus}캠퍼스 ${target.round}회차)의 응답을 초기화하시겠습니까?\n참석 여부와 메모가 삭제되고 '미응답' 상태가 됩니다.`)) return;
+  const target = participants.find(p => p.id === id);
+  if (!target) return;
+  if (!confirm(`${target.name} 님(${target.campus}캠퍼스 ${target.round}회차)의 응답을 초기화하시겠습니까?\n참석 여부와 메모가 삭제되고 '미응답' 상태가 됩니다.`)) return;
 
-try {
-if (window.__fb) {
-const { doc, deleteDoc, rsvpCollection } = window.__fb;
-await deleteDoc(doc(rsvpCollection, id));
-} else {
-const saved = JSON.parse(localStorage.getItem('hufs_union_rsvp') || '{}');
-delete saved[id];
-localStorage.setItem('hufs_union_rsvp', JSON.stringify(saved));
+  try {
+    if (window.__fb) {
+      const { doc, deleteDoc, rsvpCollection } = window.__fb;
+      await deleteDoc(doc(rsvpCollection, id));
+    } else {
+      const saved = JSON.parse(localStorage.getItem('hufs_union_rsvp') || '{}');
+      delete saved[id];
+      localStorage.setItem('hufs_union_rsvp', JSON.stringify(saved));
+    }
+  } catch (err) {
+    console.error('초기화 실패:', err);
+    showToast('초기화 중 오류가 발생했습니다.');
+    return;
+  }
+
+  // 화면 데이터 갱신
+  target.status = '미응답';
+  target.memo = '';
+  target.updatedAt = null;
+
+  // 참석 확인 화면에 같은 사람이 열려 있으면 함께 갱신
+  if (selectedParticipant && selectedParticipant.id === id) {
+    selectParticipant(id);
+  }
+
+  updateAdminDashboard();
+  showToast(`${target.name} 님의 응답이 초기화되었습니다.`);
 }
-} catch (err) {
-console.error('초기화 실패:', err);
-showToast('초기화 중 오류가 발생했습니다.');
-return;
-}
-
-// 화면 데이터 갱신
-target.status = '미응답';
-target.memo = '';
-target.updatedAt = null;
-
-// 참석 확인 화면에 같은 사람이 열려 있으면 함께 갱신
-if (selectedParticipant && selectedParticipant.id === id) {
-selectParticipant(id);
-}
-
-updateAdminDashboard();
-showToast(`${target.name} 님의 응답이 초기화되었습니다.`);
-}
-
+  
 async function resetDataPrompt() {
 if (!confirm('저장된 모든 RSVP 응답 데이터를 초기화하시겠습니까? (공유 저장소에서 삭제되며 모든 사용자에게 반영됩니다)')) return;
 
