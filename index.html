@@ -915,35 +915,30 @@ container.innerHTML = roundsArray.map(r => `
 }
 
 function renderAdminTable(list) {
-document.getElementById('admin-table-count').innerText = list.length;
+  document.getElementById('admin-table-count').innerText = list.length;
 
-const tbody = document.getElementById('admin-table-body');
+  const tbody = document.getElementById('admin-table-body');
 
-if (list.length === 0) {
-tbody.innerHTML = `<tr><td colspan="9" class="p-8 text-center text-slate-400">조회된 명단이 없습니다.</td></tr>`;
-return;
-}
+  if (list.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="9" class="p-8 text-center text-slate-400">조회된 명단이 없습니다.</td></tr>`;
+    return;
+  }
 
-let lastGroupKey = null;
-let stripe = 0;
+  let lastGroupKey = null;
+  let stripe = 0;
 
-tbody.innerHTML = list.map(item => {
-let lastGroupKey = null;
-let stripe = 0;
+  tbody.innerHTML = list.map(item => {
+    const groupKey = `${item.campus}_${item.round}_${item.date}`;
+    let isGroupStart = false;
+    if (groupKey !== lastGroupKey) {
+      stripe = stripe === 0 ? 1 : 0;
+      isGroupStart = lastGroupKey !== null;   // 맨 첫 행은 제외
+      lastGroupKey = groupKey;
+    }
+    const rowBg = stripe === 0 ? 'bg-white' : 'bg-hufs-lightBlue/50';
+    const borderCls = isGroupStart ? 'group-divider' : '';
 
-tbody.innerHTML = list.map(item => {
-const groupKey = `${item.campus}_${item.round}_${item.date}`;
-let isGroupStart = false;
-if (groupKey !== lastGroupKey) {
-  stripe = stripe === 0 ? 1 : 0;
-  isGroupStart = lastGroupKey !== null;   // 맨 첫 행은 제외
-  lastGroupKey = groupKey;
-}
-const rowBg = stripe === 0 ? 'bg-white' : 'bg-hufs-lightBlue/50';
-const borderCls = isGroupStart ? 'group-divider' : '';
-
-return `
-
+    return `
 <tr class="${rowBg} ${borderCls} hover:bg-slate-100 transition text-xs md:text-sm">
 <td class="p-3 whitespace-nowrap"><span class="px-2 py-0.5 rounded ${item.campus==='서울'?'bg-blue-100 text-blue-800':'bg-emerald-100 text-emerald-800'} font-bold">${item.campus}</span></td>
 <td class="p-3 font-semibold whitespace-nowrap">${item.round}회차</td>
@@ -960,16 +955,17 @@ class="px-3 py-1.5 border-l border-slate-300 transition ${item.status === '불�
 </div>
 ${item.status === '미응답' ? '<span class="ml-2 text-xs text-slate-400">미응답</span>' : ''}
 </td>
-<td class="p-3 text-slate-500 max-w-[160px] truncate" title="${item.memo || ''}">${item.memo || '-'}</td><td class="p-3 text-center">
+<td class="p-3 text-slate-500 max-w-[160px] truncate" title="${item.memo || ''}">${item.memo || '-'}</td>
+<td class="p-3 text-center">
 ${item.status === '미응답' && !item.memo
-? '<span class="text-slate-300">-</span>'
-: `<button onclick="resetIndividual('${item.id}')" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-rose-100 text-slate-600 hover:text-rose-700 text-xs font-semibold transition whitespace-nowrap" title="${item.name} 님의 응답 초기화">
+  ? '<span class="text-slate-300">-</span>'
+  : `<button onclick="resetIndividual('${item.id}')" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-rose-100 text-slate-600 hover:text-rose-700 text-xs font-semibold transition whitespace-nowrap" title="${item.name} 님의 응답 초기화">
 <i class="fa-solid fa-rotate-left mr-1"></i>초기화
 </button>`}
 </td>
 </tr>
 `;
-}).join('');
+  }).join('');
 }
 
 function exportToCSV() {
