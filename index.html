@@ -36,6 +36,10 @@ body { font-family: 'Pretendard', sans-serif; background-color: #F8FAFC; }
 .custom-scrollbar::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 4px; }
 .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
 .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+  /* 날짜(회차)가 바뀌는 첫 행 위에 굵은 구분선 */
+#admin-table-body tr.group-divider > td {
+  border-top: 3px solid #002D56;
+}
 </style>
 </head>
 <body class="text-slate-800 min-h-screen flex flex-col justify-between">
@@ -924,16 +928,23 @@ let lastGroupKey = null;
 let stripe = 0;
 
 tbody.innerHTML = list.map(item => {
+let lastGroupKey = null;
+let stripe = 0;
+
+tbody.innerHTML = list.map(item => {
 const groupKey = `${item.campus}_${item.round}_${item.date}`;
+let isGroupStart = false;
 if (groupKey !== lastGroupKey) {
   stripe = stripe === 0 ? 1 : 0;
+  isGroupStart = lastGroupKey !== null;   // 맨 첫 행은 제외
   lastGroupKey = groupKey;
 }
 const rowBg = stripe === 0 ? 'bg-white' : 'bg-hufs-lightBlue/50';
+const borderCls = isGroupStart ? 'group-divider' : '';
 
 return `
 
-<tr class="${rowBg} hover:bg-slate-100 transition text-xs md:text-sm">
+<tr class="${rowBg} ${borderCls} hover:bg-slate-100 transition text-xs md:text-sm">
 <td class="p-3 whitespace-nowrap"><span class="px-2 py-0.5 rounded ${item.campus==='서울'?'bg-blue-100 text-blue-800':'bg-emerald-100 text-emerald-800'} font-bold">${item.campus}</span></td>
 <td class="p-3 font-semibold whitespace-nowrap">${item.round}회차</td>
 <td class="p-3 text-slate-600 whitespace-nowrap">${item.date} (${item.day})</td>
