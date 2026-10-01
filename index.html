@@ -873,7 +873,8 @@ else if (dateMode === 'PAST') scheduled = filtered.filter(p => p.date < today);
 renderRoundSummaries(scheduled);
 
 // 3. Table Filtering
-const statusFilter = (document.getElementById('admin-status-filter') || {}).value || 'ALL';const searchQuery = document.getElementById('admin-search-input').value.trim().toLowerCase();
+const statusFilter = (document.getElementById('admin-status-filter') || {}).value || 'ALL';
+const searchQuery = document.getElementById('admin-search-input').value.trim().toLowerCase();
 
 let tableData = scheduled;
 if (statusFilter !== 'ALL') {
