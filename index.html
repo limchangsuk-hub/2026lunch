@@ -230,11 +230,10 @@ class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:outline-non
 </div>
 <!-- Search & Filter Controls -->
 <div class="flex flex-wrap items-center gap-2">
-<select id="admin-status-filter" onchange="applyAdminFilters()" class="px-3 py-2 border border-slate-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-hufs-blue">
-<option value="ALL">전체 응답 상태</option>
-<option value="참석">참석만 보기</option>
-<option value="불참">불참만 보기</option>
-<option value="미응답">미응답만 보기</option>
+<select id="admin-date-filter" onchange="applyAdminFilters()" class="px-3 py-2 border border-slate-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-hufs-blue">
+<option value="UPCOMING">지나간 일정 숨기기</option>
+<option value="ALL">전체 일정 보기</option>
+<option value="PAST">지나간 일정만 보기</option>
 </select>
 <input type="text" id="admin-search-input" onkeyup="applyAdminFilters()" placeholder="이름/부서 검색"
 class="px-3 py-2 border border-slate-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-hufs-blue">
@@ -826,7 +825,12 @@ btnSeoul.className = campus === '서울' ? activeClass : inactiveClass;
 btnGlobal.className = campus === '글로벌' ? activeClass : inactiveClass;
 updateAdminDashboard();
 }
-
+function getTodayStr() {
+  const d = new Date();
+  const pad = n => String(n).padStart(2, '0');
+  return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+}
+  
 function applyAdminFilters() {
 updateAdminDashboard();
 }
@@ -852,23 +856,30 @@ document.getElementById('stat-absent-pct').innerText = total ? `${Math.round((ab
 document.getElementById('stat-pending').innerText = `${pending}명`;
 document.getElementById('stat-pending-pct').innerText = total ? `${Math.round((pending / total) * 100)}%` : '0%';
 
+// 일정 범위 필터 (기본: 지나간 일정 숨김)
+const dateMode = document.getElementById('admin-date-filter').value;
+const today = getTodayStr();
+let scheduled = filtered;
+if (dateMode === 'UPCOMING') scheduled = filtered.filter(p => p.date >= today);
+else if (dateMode === 'PAST') scheduled = filtered.filter(p => p.date < today);
+
 // 2. Round Summaries
-renderRoundSummaries(filtered);
+renderRoundSummaries(scheduled);
 
 // 3. Table Filtering
 const statusFilter = document.getElementById('admin-status-filter').value;
 const searchQuery = document.getElementById('admin-search-input').value.trim().toLowerCase();
 
-let tableData = filtered;
+let tableData = scheduled;
 if (statusFilter !== 'ALL') {
-tableData = tableData.filter(p => p.status === statusFilter);
+  tableData = tableData.filter(p => p.status === statusFilter);
 }
 if (searchQuery) {
-tableData = tableData.filter(p =>
-p.name.toLowerCase().includes(searchQuery) ||
-p.dept.toLowerCase().includes(searchQuery) ||
-p.phone.includes(searchQuery)
-);
+  tableData = tableData.filter(p =>
+    p.name.toLowerCase().includes(searchQuery) ||
+    p.dept.toLowerCase().includes(searchQuery) ||
+    p.phone.includes(searchQuery)
+  );
 }
 
 renderAdminTable(tableData);
