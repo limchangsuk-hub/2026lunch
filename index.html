@@ -50,11 +50,16 @@ body { font-family: 'Pretendard', sans-serif; background-color: #F8FAFC; }
 <i class="fa-solid font-bold fa-utensils"></i>
 </div>
 <div>
-<h1 class="text-lg md:text-xl font-bold leading-tight">2026 한국외국어대학교 노동조합 식사를 통한 소통</h1>
+<h1 class="text-lg md:text-xl font-bold leading-tight"><span class="js-year">2026</span>2026 한국외국어대학교 노동조합 식사를 통한 소통</h1>
 <p class="text-xs text-blue-200">참석 여부 확인 시스템</p>
 </div>
 </div>
 <nav class="flex items-center space-x-2">
+<select id="year-select" onchange="setYear(this.value)"
+  class="px-3 py-1.5 rounded-lg text-sm font-semibold bg-white/10 text-white border border-white/20 focus:outline-none focus:ring-2 focus:ring-hufs-gold [&>option]:text-slate-800">
+</select>
+
+  
 <button id="nav-user-btn" onclick="switchView('user')" class="px-3 py-1.5 rounded-lg text-sm font-medium transition bg-white/10 hover:bg-white/20 text-white flex items-center gap-1.5">
 <i class="fa-solid fa-user-check"></i> <span>참석 확인</span>
 </button>
@@ -69,7 +74,7 @@ body { font-family: 'Pretendard', sans-serif; background-color: #F8FAFC; }
 <!-- Banner -->
 <div class="bg-gradient-to-r from-hufs-navy via-hufs-blue to-indigo-900 rounded-2xl p-6 md:p-8 text-white shadow-lg relative overflow-hidden">
 <div class="relative z-10 max-w-2xl">
-<span class="inline-block px-3 py-1 bg-hufs-gold text-hufs-navy text-xs font-bold rounded-full mb-3 shadow">2026 한국외국어대학교 노동조합 식사를 통한 소통</span>
+<span class="inline-block px-3 py-1 bg-hufs-gold text-hufs-navy text-xs font-bold rounded-full mb-3 shadow"><span class="js-year">2026</span>한국외국어대학교 노동조합 식사를 통한 소통</span>
 <h2 class="text-2xl md:text-3xl font-bold mb-2">조합원 여러분을 점심식사에 초대합니다</h2>
 <p class="text-blue-100 text-sm md:text-base leading-relaxed mb-4">
 조합원 상호 간의 친목과 원활한 소통을 위해 점심식사 자리를 마련했습니다.<br class="hidden sm:inline">
@@ -196,7 +201,7 @@ class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:outline-non
 <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
 <div class="text-xs font-bold text-slate-400 uppercase">전체 대상자</div>
 <div class="text-3xl font-extrabold text-slate-800 mt-1" id="stat-total">137명</div>
-<div class="text-xs text-slate-500 mt-1">서울 95 / 글로벌 42</div>
+<div id="stat-total-sub" class="text-xs text-slate-500 mt-1"></div>
 </div>
 <div class="bg-white p-5 rounded-2xl border border-emerald-200 bg-emerald-50/20 shadow-sm">
 <div class="text-xs font-bold text-emerald-600 uppercase">참석 예정</div>
@@ -507,17 +512,58 @@ let participants = [];
 let selectedParticipant = null;
 let currentAdminCampus = 'ALL';
 
+let currentYear = null;
+
+function getYears() { return [...new Set(participants.map(p => p.year))].sort(); }
+function yearList() { return participants.filter(p => p.year === currentYear); }
+
+function initYearSelect() {
+  const years = getYears();
+  const thisYear = String(new Date().getFullYear());
+  currentYear = years.includes(thisYear) ? thisYear : years[years.length - 1];
+  const sel = document.getElementById('year-select');
+  sel.innerHTML = years.map(y => `<option value="${y}">${y}년</option>`).join('');
+  sel.value = currentYear;
+  applyYearLabels();
+}
+
+function setYear(y) {
+  currentYear = y;
+  selectedParticipant = null;
+  document.getElementById('rsvp-card').classList.add('hidden');
+  document.getElementById('name-search-input').value = '';
+  document.getElementById('suggestions-container').classList.add('hidden');
+  document.getElementById('clear-search-btn').classList.add('hidden');
+  applyYearLabels();
+  updateAdminDashboard();
+}
+
+function applyYearLabels() {
+  document.querySelectorAll('.js-year').forEach(el => el.innerText = currentYear);
+  document.title = `${currentYear} 한국외국어대학교 노동조합 식사를 통한 소통 RSVP`;
+  const list = yearList();
+  const rounds = c => new Set(list.filter(p => p.campus === c).map(p => p.round)).size;
+  document.getElementById('round-count-seoul').innerText = rounds('서울');
+  document.getElementById('round-count-global').innerText = rounds('글로벌');
+}
+
+
+
+  
+
 // Build Master Dataset with unique IDs
 function initData() {
 const seoul = rawSeoulData.map((item, idx) => ({
-id: `SEOUL_${idx}_${item.name}`,
-campus: '서울',
-...item
+  id: `SEOUL_${idx}_${item.name}`,
+  campus: '서울',
+  year: item.date.slice(0, 4),
+  ...item
 }));
 const global = rawGlobalData.map((item, idx) => ({
-id: `GLOBAL_${idx}_${item.name}`,
-campus: '글로벌',
-...item
+  id: `GLOBAL_${idx}_${item.name}`,
+  campus: '글로벌',
+  year: item.date.slice(0, 4),
+  ...item
 }));
 const masterList = [...seoul, ...global];
 
@@ -571,6 +617,7 @@ renderCompanions(refreshed);
 
 document.addEventListener('DOMContentLoaded', () => {
 initData();
+  initYearSelect();
 setupSearchEvents();
 updateAdminDashboard();
 });
@@ -650,7 +697,7 @@ suggestionsBox.classList.add('hidden');
 return;
 }
 // Filter participants by name or dept or phone
-const matches = participants.filter(p =>
+const matches = yearList().filter(p =>
 p.name.toLowerCase().includes(query) ||
 p.dept.toLowerCase().includes(query) ||
 p.phone.includes(query)
@@ -714,6 +761,13 @@ document.getElementById('info-location').innerText = LOCATIONS[selectedParticipa
 // 함께 식사하는 분: 같은 캠퍼스 + 같은 회차 (본인 제외) - 실시간 참석 여부 포함
 renderCompanions(selectedParticipant);
 
+const companions = participants.filter(p =>
+  p.year === person.year &&
+  p.campus === person.campus &&
+  p.round === person.round &&
+  p.id !== person.id
+);
+  
 // Status Badge
 const badge = document.getElementById('rsvp-status-badge');
 badge.innerText = selectedParticipant.status;
@@ -843,7 +897,7 @@ updateAdminDashboard();
 
 function updateAdminDashboard() {
 // 1. Filter by Campus
-let filtered = participants;
+let filtered = yearList();
 if (currentAdminCampus !== 'ALL') {
 filtered = filtered.filter(p => p.campus === currentAdminCampus);
 }
@@ -853,6 +907,11 @@ const total = filtered.length;
 const attending = filtered.filter(p => p.status === '참석').length;
 const absent = filtered.filter(p => p.status === '불참').length;
 const pending = filtered.filter(p => p.status === '미응답').length;
+const seoulCnt = filtered.filter(p => p.campus === '서울').length;
+const globalCnt = filtered.filter(p => p.campus === '글로벌').length;
+document.getElementById('stat-total-sub').innerText = `서울 ${seoulCnt} / 글로벌 ${globalCnt}`;
+
+  
 
 document.getElementById('stat-total').innerText = `${total}명`;
 document.getElementById('stat-attending').innerText = `${attending}명`;
@@ -987,7 +1046,7 @@ ${item.status === '미응답' && !item.memo
 
 function exportToCSV() {
 const headers = ['캠퍼스', '회차', '날짜', '요일', '이름', '소속', '근무부서', '휴대폰', '직장메일', '참석여부', '메모'];
-const rows = participants.map(p => [
+const rows = yearList().map(p => [
 p.campus,
 p.round,
 p.date,
@@ -1006,7 +1065,7 @@ const url = URL.createObjectURL(blob);
 const link = document.createElement('a');
 const today = new Date().toISOString().slice(0, 10);
 link.setAttribute('href', url);
-link.setAttribute('download', `노동조합_점심식사_RSVP_명단_${today}.csv`);
+link.setAttribute('download', `노동조합_점심식사_RSVP_명단_${currentYear}년_${today}.csv`);
 document.body.appendChild(link);
 link.click();
 document.body.removeChild(link);
@@ -1084,13 +1143,12 @@ async function resetIndividual(id) {
 }
   
 async function resetDataPrompt() {
-if (!confirm('저장된 모든 RSVP 응답 데이터를 초기화하시겠습니까? (공유 저장소에서 삭제되며 모든 사용자에게 반영됩니다)')) return;
+if (!confirm(`${currentYear}년 RSVP 응답 데이터를 모두 초기화하시겠습니까? (공유 저장소에서 삭제되며 모든 사용자에게 반영됩니다)`)) return;
 
 try {
 if (window.__fb) {
 const { db, doc, deleteDoc, rsvpCollection } = window.__fb;
-const deletions = participants
-.filter(p => p.status !== '미응답' || p.memo)
+const deletions = yearList().filter(p => p.status !== '미응답' || p.memo)
 .map(p => deleteDoc(doc(rsvpCollection, p.id)));
 await Promise.all(deletions);
 } else {
@@ -1102,7 +1160,8 @@ showToast('초기화 중 오류가 발생했습니다.');
 return;
 }
 
-initData();
+yearList().forEach(p => { p.status = '미응답'; p.memo = ''; p.updatedAt = null; });
+  
 updateAdminDashboard();
 showToast('모든 응답 데이터가 초기화되었습니다.');
 }
