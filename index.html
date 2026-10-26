@@ -84,8 +84,9 @@ body { font-family: 'Pretendard', sans-serif; background-color: #F8FAFC; }
 아래에서 "이름"을 검색하여 본인의 일정을 확인하고 참석 여부를 등록해 주세요. 참석여부는 언제든지 수정 가능합니다.
 </p>
 <div class="flex flex-wrap gap-4 text-xs md:text-sm text-slate-200">
-<span class="flex items-center gap-1.5 bg-white/10 px-3 py-1.5 rounded-md"><i class="fa-regular fa-building text-hufs-gold"></i> 서울: 매주 수요일 (13회차)</span>
-<span class="flex items-center gap-1.5 bg-white/10 px-3 py-1.5 rounded-md"><i class="fa-solid fa-globe text-hufs-gold"></i> 글로벌: 매주 목요일 (6회차)</span>
+<span class="flex items-center gap-1.5 bg-white/10 px-3 py-1.5 rounded-md"><i class="fa-regular fa-building text-hufs-gold"></i> 서울: 매주 수요일 (<span id="round-count-seoul">13</span>회차)</span>
+<span class="flex items-center gap-1.5 bg-white/10 px-3 py-1.5 rounded-md"><i class="fa-solid fa-globe text-hufs-gold"></i> 글로벌: 매주 목요일 (<span id="round-count-global">6</span>회차)</span>
+  
 </div>
 </div>
 <i class="fa-solid fa-utensils absolute -right-6 -bottom-6 text-9xl text-white/5 pointer-events-none transform -rotate-12"></i>
@@ -764,12 +765,6 @@ document.getElementById('info-location').innerText = LOCATIONS[selectedParticipa
 // 함께 식사하는 분: 같은 캠퍼스 + 같은 회차 (본인 제외) - 실시간 참석 여부 포함
 renderCompanions(selectedParticipant);
 
-const companions = participants.filter(p =>
-  p.year === person.year &&
-  p.campus === person.campus &&
-  p.round === person.round &&
-  p.id !== person.id
-);
   
 // Status Badge
 const badge = document.getElementById('rsvp-status-badge');
