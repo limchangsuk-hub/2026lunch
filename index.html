@@ -559,13 +559,13 @@ function applyYearLabels() {
 // Build Master Dataset with unique IDs
 function initData() {
 const seoul = rawSeoulData.map((item, idx) => ({
-  id: `SEOUL_${idx}_${item.name}`,
+id: `SEOUL_${item.date}_${item.name}`,
   campus: '서울',
   year: item.date.slice(0, 4),
   ...item
 }));
 const global = rawGlobalData.map((item, idx) => ({
-  id: `GLOBAL_${idx}_${item.name}`,
+id: `GLOBAL_${item.date}_${item.name}`,
   campus: '글로벌',
   year: item.date.slice(0, 4),
   ...item
