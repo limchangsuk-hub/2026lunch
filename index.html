@@ -558,13 +558,13 @@ function applyYearLabels() {
 // Build Master Dataset with unique IDs
 function initData() {
 const seoul = rawSeoulData.map((item, idx) => ({
-id: `SEOUL_${idx}_${item.name}`,
+id: `SEOUL_${item.date}_${item.name}`,     // 서울
   campus: '서울',
   year: item.date.slice(0, 4),
   ...item
 }));
 const global = rawGlobalData.map((item, idx) => ({
-id: `GLOBAL_${idx}_${item.name}`,
+id: `GLOBAL_${item.date}_${item.name}`,    // 글로벌
   campus: '글로벌',
   year: item.date.slice(0, 4),
   ...item
@@ -1173,6 +1173,32 @@ setTimeout(() => {
 toast.classList.add('translate-y-20', 'opacity-0');
 }, 3000);
 }
+async function migrateIds() {
+  const { doc, setDoc, getDocs, rsvpCollection } = window.__fb;
+  if (!getDocs) { alert('getDocs가 없습니다. 아래 3번 수정을 먼저 적용하세요.'); return; }
+  if (!confirm('기존 응답을 새 ID로 복사합니다. 계속할까요?')) return;
+
+  const snap = await getDocs(rsvpCollection);
+  const old = {};
+  snap.forEach(d => old[d.id] = d.data());
+
+  let moved = 0;
+  const jobs = [];
+  const convert = (list, prefix) => list.forEach((item, idx) => {
+    const oldId = `${prefix}_${idx}_${item.name}`;
+    const newId = `${prefix}_${item.date}_${item.name}`;
+    if (old[oldId]) {
+      jobs.push(setDoc(doc(rsvpCollection, newId), old[oldId]));
+      moved++;
+    }
+  });
+  convert(rawSeoulData, 'SEOUL');
+  convert(rawGlobalData, 'GLOBAL');
+  await Promise.all(jobs);
+  alert(`${moved}건을 새 ID로 복사했습니다.`);
+}
+
+  
 </script>
 </body>
 </html>
